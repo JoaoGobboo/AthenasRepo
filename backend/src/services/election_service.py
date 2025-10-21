@@ -26,6 +26,31 @@ def get_blockchain_service() -> Optional[BlockchainService]:
     return _blockchain_service
 
 
+def _resolve_chain_election_id(
+    election_id: int, chain_service: BlockchainService
+) -> Optional[int]:
+    """Mapeia o ID da eleição do banco para o ID equivalente no contrato."""
+
+    # O contrato começa em 0, enquanto o banco inicia em 1 por conta do auto-incremento.
+    # Fazemos o ajuste e validamos se o ID existe na blockchain para prevenir reverts.
+
+    chain_election_id = election_id - 1
+    if chain_election_id < 0:
+        return None
+
+    try:
+        election_count = chain_service.contract.functions.electionCount().call()
+    except Exception:
+        # Se não conseguirmos consultar, devolvemos o ID calculado e deixamos a
+        # transação lidar com qualquer erro. Isso evita mascarar problemas de RPC.
+        return chain_election_id
+
+    if chain_election_id >= election_count:
+        return None
+
+    return chain_election_id
+
+
 def create_election(
     title: str, description: str, candidates: List[str], creator_wallet: str
 ) -> Dict:
@@ -135,19 +160,24 @@ def get_election_results(election_id: int) -> Optional[Dict]:
         if election is None:
             return None
 
+        election_dict = election.to_dict()
+
         votes = (
             session.query(Vote.candidate_id)
             .filter(Vote.election_id == election_id)
             .all()
         )
-        vote_counts = {candidate.id: 0 for candidate in election.candidates}
+        vote_counts = {candidate["id"]: 0 for candidate in election_dict["candidates"]}
         for (candidate_id,) in votes:
-            vote_counts[candidate_id] += 1
+            if candidate_id in vote_counts:
+                vote_counts[candidate_id] += 1
 
     chain_service = get_blockchain_service()
     blockchain_data = None
     if chain_service:
-        blockchain_data = chain_service.fetch_results(election_id)
+        chain_election_id = _resolve_chain_election_id(election_id, chain_service)
+        if chain_election_id is not None:
+            blockchain_data = chain_service.fetch_results(chain_election_id)
 
     if blockchain_data:
         candidate_names, chain_counts = blockchain_data
@@ -157,12 +187,15 @@ def get_election_results(election_id: int) -> Optional[Dict]:
         ]
     else:
         chain_results = [
-            {"candidate": candidate.name, "votes": vote_counts[candidate.id]}
-            for candidate in election.candidates
+            {
+                "candidate": candidate["name"],
+                "votes": vote_counts.get(candidate["id"], 0),
+            }
+            for candidate in election_dict["candidates"]
         ]
 
     return {
-        "election": election.to_dict(),
+        "election": election_dict,
         "results": chain_results,
         "source": "blockchain" if blockchain_data else "database",
     }
@@ -184,4 +217,11 @@ def submit_vote_to_chain(election_id: int, candidate_index: int) -> BlockchainRe
             status="skipped",
             message="Blockchain not configured",
         )
-    return chain_service.cast_vote(election_id, candidate_index)
+    chain_election_id = _resolve_chain_election_id(election_id, chain_service)
+    if chain_election_id is None:
+        return BlockchainResult(
+            tx_hash=None,
+            status="error",
+            message="Election not found on blockchain",
+        )
+    return chain_service.cast_vote(chain_election_id, candidate_index)

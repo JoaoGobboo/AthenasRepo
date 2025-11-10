@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchElections, submitVote } from "../services/api.js";
+import { voteOnChain } from "../services/blockchain.js";
 
 const Votacao = ({ wallet }) => {
   const { id } = useParams();
@@ -28,14 +29,28 @@ const Votacao = ({ wallet }) => {
     setLoading(true);
     setStatus("");
     try {
+      const chainElectionId = Math.max(0, Number(id) - 1);
+      const candidateIndex = election.candidates.findIndex(
+        (candidate) => candidate.id === Number(selectedCandidate)
+      );
+      if (candidateIndex === -1) {
+        setStatus("Candidato não encontrado.");
+        return;
+      }
+      const txHash = await voteOnChain(chainElectionId, candidateIndex);
       const response = await submitVote({
         electionId: Number(id),
-        candidateId: Number(selectedCandidate)
+        candidateId: Number(selectedCandidate),
+        txHash
       });
       setStatus(response.blockchain?.message || "Voto registrado!");
       setTimeout(() => navigate(`/resultado/${id}`), 1500);
     } catch (error) {
-      setStatus(error.response?.data?.message || "Erro ao registrar voto.");
+      if (error?.code === 4001) {
+        setStatus("Transação cancelada pelo usuário.");
+      } else {
+        setStatus(error.response?.data?.message || error.message || "Erro ao registrar voto.");
+      }
     } finally {
       setLoading(false);
     }

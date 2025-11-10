@@ -6,14 +6,22 @@ from sqlalchemy import select
 from sqlalchemy.orm import joinedload
 
 from src.models import Candidate, Election, User, Vote
-from src.services.blockchain_service import (
-    BlockchainResult,
-    BlockchainService,
-    BlockchainUnavailable,
-)
+from src.services.blockchain_service import BlockchainService, BlockchainUnavailable
 from src.utils.db import session_scope
 
 _blockchain_service: Optional[BlockchainService] = None
+
+
+def _format_blockchain_info(tx_hash: Optional[str]) -> Dict[str, str]:
+    if tx_hash:
+        return {
+            "status": "submitted",
+            "tx_hash": tx_hash,
+        }
+    return {
+        "status": "skipped",
+        "message": "Blockchain transaction hash not provided",
+    }
 
 
 def get_blockchain_service() -> Optional[BlockchainService]:
@@ -52,7 +60,11 @@ def _resolve_chain_election_id(
 
 
 def create_election(
-    title: str, description: str, candidates: List[str], creator_wallet: str
+    title: str,
+    description: str,
+    candidates: List[str],
+    creator_wallet: str,
+    tx_hash: Optional[str] = None,
 ) -> Dict:
     with session_scope() as session:
         user = session.execute(
@@ -74,8 +86,7 @@ def create_election(
         session.flush()
         election_dict = election.to_dict()
 
-    chain_info = submit_election_to_chain(title, candidates)
-    election_dict["blockchain"] = chain_info
+    election_dict["blockchain"] = _format_blockchain_info(tx_hash)
     return election_dict
 
 
@@ -90,7 +101,9 @@ def list_elections() -> List[Dict]:
         return [election.to_dict() for election in elections]
 
 
-def record_vote(election_id: int, candidate_id: int, wallet: str) -> Dict:
+def record_vote(
+    election_id: int, candidate_id: int, wallet: str, tx_hash: Optional[str]
+) -> Dict:
     with session_scope() as session:
         user = session.execute(select(User).where(User.wallet_address == wallet)).scalar_one_or_none()
         if user is None:
@@ -115,6 +128,13 @@ def record_vote(election_id: int, candidate_id: int, wallet: str) -> Dict:
         if candidate_index is None:
             return {"status": "error", "message": "Candidate not found", "code": 404}
 
+        if not tx_hash:
+            return {
+                "status": "error",
+                "message": "txHash is required to register blockchain votes",
+                "code": 400,
+            }
+
         existing_vote = (
             session.query(Vote)
             .filter(Vote.election_id == election_id, Vote.voter_id == user.id)
@@ -127,16 +147,11 @@ def record_vote(election_id: int, candidate_id: int, wallet: str) -> Dict:
                 "code": 409,
             }
 
-        chain_result = submit_vote_to_chain(election_id, candidate_index)
-        if chain_result.status == "error":
-            session.rollback()
-            return {"status": "error", "message": chain_result.message, "code": 400}
-
         vote = Vote(
             election_id=election_id,
             voter_id=user.id,
             candidate_id=candidate_id,
-            tx_hash=chain_result.tx_hash or chain_result.status,
+            tx_hash=tx_hash,
         )
         session.add(vote)
         session.flush()
@@ -144,7 +159,7 @@ def record_vote(election_id: int, candidate_id: int, wallet: str) -> Dict:
         response = {
             "status": "ok",
             "vote": vote.to_dict(),
-            "blockchain": chain_result.__dict__,
+            "blockchain": _format_blockchain_info(tx_hash),
         }
     return response
 
@@ -199,29 +214,3 @@ def get_election_results(election_id: int) -> Optional[Dict]:
         "results": chain_results,
         "source": "blockchain" if blockchain_data else "database",
     }
-
-
-def submit_election_to_chain(title: str, candidates: List[str]) -> Dict:
-    chain_service = get_blockchain_service()
-    if not chain_service:
-        return {"status": "skipped", "message": "Blockchain not configured"}
-    result = chain_service.create_election(title, candidates)
-    return result.__dict__
-
-
-def submit_vote_to_chain(election_id: int, candidate_index: int) -> BlockchainResult:
-    chain_service = get_blockchain_service()
-    if not chain_service:
-        return BlockchainResult(
-            tx_hash=None,
-            status="skipped",
-            message="Blockchain not configured",
-        )
-    chain_election_id = _resolve_chain_election_id(election_id, chain_service)
-    if chain_election_id is None:
-        return BlockchainResult(
-            tx_hash=None,
-            status="error",
-            message="Election not found on blockchain",
-        )
-    return chain_service.cast_vote(chain_election_id, candidate_index)

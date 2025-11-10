@@ -29,8 +29,8 @@ export const createElection = async (payload) => {
   return response.data.election;
 };
 
-export const submitVote = async ({ electionId, candidateId }) => {
-  const response = await api.post("/vote", { electionId, candidateId });
+export const submitVote = async ({ electionId, candidateId, txHash }) => {
+  const response = await api.post("/vote", { electionId, candidateId, txHash });
   return response.data;
 };
 

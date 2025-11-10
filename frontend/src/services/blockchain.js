@@ -39,3 +39,25 @@ export const getContract = async () => {
   const web3 = await getWeb3();
   return new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 };
+
+const getActiveAccount = async () => {
+  const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+  if (!accounts.length) {
+    throw new Error("Nenhuma carteira conectada");
+  }
+  return accounts[0];
+};
+
+export const createElectionOnChain = async (title, candidates) => {
+  const contract = await getContract();
+  const from = await getActiveAccount();
+  const receipt = await contract.methods.createElection(title, candidates).send({ from });
+  return receipt.transactionHash;
+};
+
+export const voteOnChain = async (electionId, candidateIndex) => {
+  const contract = await getContract();
+  const from = await getActiveAccount();
+  const receipt = await contract.methods.vote(electionId, candidateIndex).send({ from });
+  return receipt.transactionHash;
+};

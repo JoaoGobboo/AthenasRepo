@@ -46,6 +46,7 @@ def test_create_election_flow(test_client):
         "title": "Presidencial 2024",
         "description": "Eleicao de teste",
         "candidates": ["Alice", "Bob"],
+        "txHash": "0xtest",
     }
     response = client.post(
         "/api/v1/elections",

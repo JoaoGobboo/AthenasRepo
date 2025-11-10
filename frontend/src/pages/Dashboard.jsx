@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CardEleicao from "../components/CardEleicao.jsx";
 import { createElection, fetchElections } from "../services/api.js";
+import { createElectionOnChain } from "../services/blockchain.js";
 
 const Dashboard = () => {
   const [elections, setElections] = useState([]);
@@ -40,16 +41,22 @@ const Dashboard = () => {
         setMessage("Informe ao menos um candidato.");
         return;
       }
+      const txHash = await createElectionOnChain(form.title, candidates);
       await createElection({
         title: form.title,
         description: form.description,
-        candidates
+        candidates,
+        txHash
       });
       setForm({ title: "", description: "", candidates: "" });
       setMessage("Eleição criada com sucesso!");
       await loadElections();
     } catch (error) {
-      setMessage(error.response?.data?.message || "Erro ao criar eleição.");
+      if (error?.code === 4001) {
+        setMessage("Transação cancelada pelo usuário.");
+      } else {
+        setMessage(error.response?.data?.message || error.message || "Erro ao criar eleição.");
+      }
     } finally {
       setLoading(false);
     }

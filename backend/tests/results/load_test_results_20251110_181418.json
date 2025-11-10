@@ -1,0 +1,557 @@
+{
+  "generated_at": "2025-11-10T18:14:18.510985",
+  "config": {
+    "base_url": "http://localhost:5000/api/v1",
+    "total_votes": 10,
+    "wallet_count": 12,
+    "candidate_names": [
+      "Alice",
+      "Bob",
+      "Carol"
+    ],
+    "timeout": 10.0,
+    "max_retries": 2
+  },
+  "election": {
+    "id": 5,
+    "title": "Carga Automatizada 2025-11-10 18:13:35",
+    "candidates": [
+      {
+        "id": 4,
+        "name": "Alice"
+      },
+      {
+        "id": 5,
+        "name": "Bob"
+      },
+      {
+        "id": 6,
+        "name": "Carol"
+      }
+    ]
+  },
+  "records": [
+    {
+      "timestamp": "2025-11-10T18:13:38.022812+00:00",
+      "request_index": 1,
+      "wallet": "0xc4D0E9fFDF77c18ba0A2903c96BE004d76Bd221D",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 6
+      },
+      "response_time_ms": 1539.49,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "{'code': -32000, 'message': 'nonce too low: next nonce 22, tx nonce 21'}",
+      "response_excerpt": "{\"code\": 400, \"message\": \"{'code': -32000, 'message': 'nonce too low: next nonce 22, tx nonce 21'}\", \"status\": \"error\"}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T18:13:39.796208+00:00",
+      "request_index": 2,
+      "wallet": "0xc4D0E9fFDF77c18ba0A2903c96BE004d76Bd221D",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 6
+      },
+      "response_time_ms": 1572.5,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"message\": \"Transaction submitted to the network.\", \"status\": \"submitted\", \"tx_hash\": \"0x018dc96798a19e44b901a971888963b5c5e1f3c54f2bc6c9fe036fcaa50d608f\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T18:13:39.764565\", \"election_id\": 5, \"id\": 3, \"tx_hash\": \"0x018dc96798a19e44b901a971888963b5c5e1f3c54f2bc6c9fe036fcaa50d608f\", \"voter_id\": 243}}",
+      "attempt": 2
+    },
+    {
+      "timestamp": "2025-11-10T18:13:41.351079+00:00",
+      "request_index": 3,
+      "wallet": "0xc7bB1eBF47b38622dF215e8a87DC9DFebf162328",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 5
+      },
+      "response_time_ms": 1554.72,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "{'code': -32000, 'message': 'replacement transaction underpriced'}",
+      "response_excerpt": "{\"code\": 400, \"message\": \"{'code': -32000, 'message': 'replacement transaction underpriced'}\", \"status\": \"error\"}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T18:13:43.103488+00:00",
+      "request_index": 4,
+      "wallet": "0xc7bB1eBF47b38622dF215e8a87DC9DFebf162328",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 5
+      },
+      "response_time_ms": 1552.17,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "{'code': -32000, 'message': 'replacement transaction underpriced'}",
+      "response_excerpt": "{\"code\": 400, \"message\": \"{'code': -32000, 'message': 'replacement transaction underpriced'}\", \"status\": \"error\"}",
+      "attempt": 2
+    },
+    {
+      "timestamp": "2025-11-10T18:13:45.062593+00:00",
+      "request_index": 5,
+      "wallet": "0xc7bB1eBF47b38622dF215e8a87DC9DFebf162328",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 5
+      },
+      "response_time_ms": 1558.83,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "{'code': -32000, 'message': 'replacement transaction underpriced'}",
+      "response_excerpt": "{\"code\": 400, \"message\": \"{'code': -32000, 'message': 'replacement transaction underpriced'}\", \"status\": \"error\"}",
+      "attempt": 3
+    },
+    {
+      "timestamp": "2025-11-10T18:13:46.611792+00:00",
+      "request_index": 6,
+      "wallet": "0xB24f9Ea0C543C890B4BC84aC3AAbE6aaf632D376",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 6
+      },
+      "response_time_ms": 1549.1,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "{'code': -32000, 'message': 'already known'}",
+      "response_excerpt": "{\"code\": 400, \"message\": \"{'code': -32000, 'message': 'already known'}\", \"status\": \"error\"}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T18:13:48.381625+00:00",
+      "request_index": 7,
+      "wallet": "0xB24f9Ea0C543C890B4BC84aC3AAbE6aaf632D376",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 6
+      },
+      "response_time_ms": 1569.64,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "{'code': -32000, 'message': 'already known'}",
+      "response_excerpt": "{\"code\": 400, \"message\": \"{'code': -32000, 'message': 'already known'}\", \"status\": \"error\"}",
+      "attempt": 2
+    },
+    {
+      "timestamp": "2025-11-10T18:13:49.940195+00:00",
+      "request_index": 8,
+      "wallet": "0xB24f9Ea0C543C890B4BC84aC3AAbE6aaf632D376",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 6
+      },
+      "response_time_ms": 1158.22,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 3
+    },
+    {
+      "timestamp": "2025-11-10T18:13:51.113648+00:00",
+      "request_index": 9,
+      "wallet": "0xed9cC2e91e63d5D65f9F60081FC257e3bcc89557",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 6
+      },
+      "response_time_ms": 1173.34,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T18:13:52.488214+00:00",
+      "request_index": 10,
+      "wallet": "0xed9cC2e91e63d5D65f9F60081FC257e3bcc89557",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 6
+      },
+      "response_time_ms": 1174.28,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 2
+    },
+    {
+      "timestamp": "2025-11-10T18:13:54.035144+00:00",
+      "request_index": 11,
+      "wallet": "0xed9cC2e91e63d5D65f9F60081FC257e3bcc89557",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 6
+      },
+      "response_time_ms": 1146.63,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 3
+    },
+    {
+      "timestamp": "2025-11-10T18:13:55.218145+00:00",
+      "request_index": 12,
+      "wallet": "0x056B6ffF679185dE5CE5E64aEF1F18c04CBD0729",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 4
+      },
+      "response_time_ms": 1182.9,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T18:13:56.589983+00:00",
+      "request_index": 13,
+      "wallet": "0x056B6ffF679185dE5CE5E64aEF1F18c04CBD0729",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 4
+      },
+      "response_time_ms": 1171.53,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 2
+    },
+    {
+      "timestamp": "2025-11-10T18:13:58.145501+00:00",
+      "request_index": 14,
+      "wallet": "0x056B6ffF679185dE5CE5E64aEF1F18c04CBD0729",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 4
+      },
+      "response_time_ms": 1155.19,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 3
+    },
+    {
+      "timestamp": "2025-11-10T18:13:59.318679+00:00",
+      "request_index": 15,
+      "wallet": "0xb6E03043FC35D5504F493C8A1de2cf0Cd5444E3D",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 5
+      },
+      "response_time_ms": 1173.08,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T18:14:00.701516+00:00",
+      "request_index": 16,
+      "wallet": "0xb6E03043FC35D5504F493C8A1de2cf0Cd5444E3D",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 5
+      },
+      "response_time_ms": 1182.58,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 2
+    },
+    {
+      "timestamp": "2025-11-10T18:14:02.269654+00:00",
+      "request_index": 17,
+      "wallet": "0xb6E03043FC35D5504F493C8A1de2cf0Cd5444E3D",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 5
+      },
+      "response_time_ms": 1167.93,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 3
+    },
+    {
+      "timestamp": "2025-11-10T18:14:03.427175+00:00",
+      "request_index": 18,
+      "wallet": "0x5e1b6Ba5A048e5beAdfE471BE933059d9397c63a",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 5
+      },
+      "response_time_ms": 1157.46,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T18:14:04.778392+00:00",
+      "request_index": 19,
+      "wallet": "0x5e1b6Ba5A048e5beAdfE471BE933059d9397c63a",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 5
+      },
+      "response_time_ms": 1150.95,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 2
+    },
+    {
+      "timestamp": "2025-11-10T18:14:06.320390+00:00",
+      "request_index": 20,
+      "wallet": "0x5e1b6Ba5A048e5beAdfE471BE933059d9397c63a",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 5
+      },
+      "response_time_ms": 1141.64,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 3
+    },
+    {
+      "timestamp": "2025-11-10T18:14:07.465041+00:00",
+      "request_index": 21,
+      "wallet": "0x730BA15396C9AF7f6F74DD94Bd3e1304b43693B3",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 4
+      },
+      "response_time_ms": 1144.57,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T18:14:08.802065+00:00",
+      "request_index": 22,
+      "wallet": "0x730BA15396C9AF7f6F74DD94Bd3e1304b43693B3",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 4
+      },
+      "response_time_ms": 1136.86,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 2
+    },
+    {
+      "timestamp": "2025-11-10T18:14:10.353682+00:00",
+      "request_index": 23,
+      "wallet": "0x730BA15396C9AF7f6F74DD94Bd3e1304b43693B3",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 4
+      },
+      "response_time_ms": 1151.32,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 3
+    },
+    {
+      "timestamp": "2025-11-10T18:14:11.494510+00:00",
+      "request_index": 24,
+      "wallet": "0xDdD5D8cDD6A5A744544b35444cda66F99B061142",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 4
+      },
+      "response_time_ms": 1140.75,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T18:14:12.853142+00:00",
+      "request_index": 25,
+      "wallet": "0xDdD5D8cDD6A5A744544b35444cda66F99B061142",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 4
+      },
+      "response_time_ms": 1158.38,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 2
+    },
+    {
+      "timestamp": "2025-11-10T18:14:14.412233+00:00",
+      "request_index": 26,
+      "wallet": "0xDdD5D8cDD6A5A744544b35444cda66F99B061142",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 4
+      },
+      "response_time_ms": 1158.87,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 3
+    },
+    {
+      "timestamp": "2025-11-10T18:14:15.575914+00:00",
+      "request_index": 27,
+      "wallet": "0x03EE99eeEd889C89B6850B3f911688Aac7a263E3",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 6
+      },
+      "response_time_ms": 1163.59,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T18:14:16.956722+00:00",
+      "request_index": 28,
+      "wallet": "0x03EE99eeEd889C89B6850B3f911688Aac7a263E3",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 6
+      },
+      "response_time_ms": 1180.38,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 2
+    },
+    {
+      "timestamp": "2025-11-10T18:14:18.510685+00:00",
+      "request_index": 29,
+      "wallet": "0x03EE99eeEd889C89B6850B3f911688Aac7a263E3",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 5,
+        "candidateId": 6
+      },
+      "response_time_ms": 1153.53,
+      "operation_status": "error",
+      "status_code": 400,
+      "message": "execution reverted: Already voted",
+      "response_excerpt": "{\"code\": 400, \"message\": \"execution reverted: Already voted\", \"status\": \"error\"}",
+      "attempt": 3
+    }
+  ]
+}

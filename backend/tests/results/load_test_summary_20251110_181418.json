@@ -1,0 +1,41 @@
+{
+  "generated_at": "2025-11-10T18:14:18.513003",
+  "config": {
+    "base_url": "http://localhost:5000/api/v1",
+    "total_votes": 10,
+    "wallet_count": 12,
+    "candidate_names": [
+      "Alice",
+      "Bob",
+      "Carol"
+    ],
+    "timeout": 10.0,
+    "max_retries": 2
+  },
+  "stats": {
+    "total_requests": 29,
+    "success_count": 1,
+    "failure_count": 28,
+    "success_rate": 3.45,
+    "failure_rate": 96.55,
+    "latency_ms": {
+      "avg": 1255.88,
+      "p50": 1167.93,
+      "p95": 1565.32,
+      "p99": 1571.7,
+      "min": 1136.86,
+      "max": 1572.5
+    },
+    "error_types": {
+      "400": {
+        "count": 28,
+        "messages": {
+          "{'code': -32000, 'message': 'nonce too low: next nonce 22, tx nonce 21'}": 1,
+          "{'code': -32000, 'message': 'replacement transaction underpriced'}": 3,
+          "{'code': -32000, 'message': 'already known'}": 2,
+          "execution reverted: Already voted": 22
+        }
+      }
+    }
+  }
+}

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import CardEleicao from "../components/CardEleicao.jsx";
 import { createElection, fetchElections } from "../services/api.js";
 import { createElectionOnChain } from "../services/blockchain.js";
+import { loadCache, saveCache, clearCacheKey } from "../utils/cache.js";
 
 const Dashboard = () => {
   const [elections, setElections] = useState([]);
@@ -10,18 +11,34 @@ const Dashboard = () => {
   const [form, setForm] = useState({ title: "", description: "", candidates: "" });
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+  const CACHE_KEY = "dashboard-elections";
+  const CACHE_TTL_SECONDS = 30;
 
-  const loadElections = async () => {
+  const loadElections = async ({ forceRefresh = false } = {}) => {
     try {
+      if (!forceRefresh) {
+        const cached = loadCache(CACHE_KEY, CACHE_TTL_SECONDS);
+        if (cached) {
+          setElections(cached);
+        }
+      }
+      setLoading(true);
       const data = await fetchElections();
       setElections(data);
+      saveCache(CACHE_KEY, data);
     } catch (error) {
       setMessage("Erro ao carregar eleições.");
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    loadElections();
+    const cached = loadCache(CACHE_KEY, CACHE_TTL_SECONDS);
+    if (cached) {
+      setElections(cached);
+    }
+    loadElections({ forceRefresh: true });
   }, []);
 
   const handleChange = (event) => {
@@ -42,6 +59,7 @@ const Dashboard = () => {
         return;
       }
       const txHash = await createElectionOnChain(form.title, candidates);
+      const txHash = await createElectionOnChain(form.title, candidates);
       await createElection({
         title: form.title,
         description: form.description,
@@ -50,7 +68,8 @@ const Dashboard = () => {
       });
       setForm({ title: "", description: "", candidates: "" });
       setMessage("Eleição criada com sucesso!");
-      await loadElections();
+      clearCacheKey(CACHE_KEY);
+      await loadElections({ forceRefresh: true });
     } catch (error) {
       if (error?.code === 4001) {
         setMessage("Transação cancelada pelo usuário.");
@@ -120,7 +139,7 @@ const Dashboard = () => {
           <h2 className="text-lg font-semibold text-white">Eleições disponíveis</h2>
           <button
             type="button"
-            onClick={loadElections}
+            onClick={() => loadElections({ forceRefresh: true })}
             className="rounded-md border border-slate-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-200 hover:border-primary hover:text-primary"
           >
             Atualizar

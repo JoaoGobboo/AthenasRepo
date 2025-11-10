@@ -1,6 +1,8 @@
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+import os
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional, Tuple
 
 from sqlalchemy import select
 from sqlalchemy.orm import joinedload
@@ -10,6 +12,8 @@ from src.services.blockchain_service import BlockchainService, BlockchainUnavail
 from src.utils.db import session_scope
 
 _blockchain_service: Optional[BlockchainService] = None
+_chain_cache: Dict[int, Tuple[datetime, Tuple[List[str], List[int]]]] = {}
+CACHE_TTL_SECONDS = int(os.getenv("CHAIN_CACHE_TTL", "30"))
 
 
 def _format_blockchain_info(tx_hash: Optional[str]) -> Dict[str, str]:
@@ -164,7 +168,9 @@ def record_vote(
     return response
 
 
-def get_election_results(election_id: int) -> Optional[Dict]:
+def get_election_results(
+    election_id: int, include_blockchain: bool = True
+) -> Optional[Dict]:
     with session_scope() as session:
         election = (
             session.query(Election)
@@ -187,12 +193,44 @@ def get_election_results(election_id: int) -> Optional[Dict]:
             if candidate_id in vote_counts:
                 vote_counts[candidate_id] += 1
 
-    chain_service = get_blockchain_service()
+    blockchain_meta = {
+        "status": "skipped" if not include_blockchain else "unavailable",
+        "cached": False,
+        "last_synced": None,
+    }
     blockchain_data = None
-    if chain_service:
-        chain_election_id = _resolve_chain_election_id(election_id, chain_service)
-        if chain_election_id is not None:
-            blockchain_data = chain_service.fetch_results(chain_election_id)
+
+    if include_blockchain:
+        cached = _get_cached_chain_results(election_id)
+        if cached:
+            candidate_names, chain_counts, cached_at = cached
+            blockchain_data = (candidate_names, chain_counts)
+            blockchain_meta = {
+                "status": "cached",
+                "cached": True,
+                "last_synced": cached_at.isoformat(),
+            }
+        else:
+            chain_service = get_blockchain_service()
+            if chain_service:
+                chain_election_id = _resolve_chain_election_id(election_id, chain_service)
+                if chain_election_id is not None:
+                    blockchain_data = chain_service.fetch_results(chain_election_id)
+                    if blockchain_data:
+                        _store_chain_results(
+                            election_id, blockchain_data[0], blockchain_data[1]
+                        )
+                        blockchain_meta = {
+                            "status": "fresh",
+                            "cached": False,
+                            "last_synced": datetime.utcnow().isoformat(),
+                        }
+                    else:
+                        blockchain_meta["status"] = "missing"
+                else:
+                    blockchain_meta["status"] = "not_found"
+            else:
+                blockchain_meta["status"] = "disabled"
 
     if blockchain_data:
         candidate_names, chain_counts = blockchain_data
@@ -213,4 +251,24 @@ def get_election_results(election_id: int) -> Optional[Dict]:
         "election": election_dict,
         "results": chain_results,
         "source": "blockchain" if blockchain_data else "database",
+        "blockchain": blockchain_meta,
     }
+
+
+def _get_cached_chain_results(
+    election_id: int,
+) -> Optional[Tuple[List[str], List[int], datetime]]:
+    cached = _chain_cache.get(election_id)
+    if not cached:
+        return None
+    cached_at, data = cached
+    if datetime.utcnow() - cached_at > timedelta(seconds=CACHE_TTL_SECONDS):
+        _chain_cache.pop(election_id, None)
+        return None
+    return data[0], data[1], cached_at
+
+
+def _store_chain_results(
+    election_id: int, candidate_names: List[str], counts: List[int]
+) -> None:
+    _chain_cache[election_id] = (datetime.utcnow(), (candidate_names, counts))

@@ -34,8 +34,12 @@ export const submitVote = async ({ electionId, candidateId, txHash }) => {
   return response.data;
 };
 
-export const fetchResults = async (id) => {
-  const response = await api.get(`/elections/${id}/results`);
+export const fetchResults = async (id, options = {}) => {
+  const params = {};
+  if (options.includeBlockchain === false) {
+    params.include_blockchain = "false";
+  }
+  const response = await api.get(`/elections/${id}/results`, { params });
   return response.data;
 };
 

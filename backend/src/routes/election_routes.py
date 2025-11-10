@@ -49,7 +49,8 @@ def create_new_election():
 @election_bp.get("/<int:election_id>/results")
 @jwt_required()
 def election_results(election_id: int):
-    results = get_election_results(election_id)
+    include_blockchain = request.args.get("include_blockchain", "true").lower() != "false"
+    results = get_election_results(election_id, include_blockchain=include_blockchain)
     if results is None:
         return jsonify({"message": "Election not found"}), 404
     return jsonify(results), 200

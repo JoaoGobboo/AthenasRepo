@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchElections, fetchResults } from "../services/api.js";
+import { loadCache, saveCache } from "../utils/cache.js";
 
 const Auditoria = () => {
   const [records, setRecords] = useState([]);
@@ -7,30 +8,56 @@ const Auditoria = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const formatRecord = (result) => ({
+      id: result.election.id,
+      title: result.election.title,
+      candidates: result.results,
+      source: result.source,
+      blockchain: result.blockchain,
+    });
+
     const loadAuditTrail = async () => {
       try {
+        const cached = loadCache("audit-records", 60);
+        if (cached) {
+          setRecords(cached);
+        }
         const elections = await fetchElections();
-        const enriched = await Promise.all(
+        const baseResults = await Promise.all(
           elections.map(async (election) => {
             try {
-              const result = await fetchResults(election.id);
-              return {
-                id: election.id,
-                title: election.title,
-                candidates: result.results,
-                source: result.source
-              };
+              const result = await fetchResults(election.id, { includeBlockchain: false });
+              return formatRecord(result);
             } catch (error) {
               return {
                 id: election.id,
                 title: election.title,
                 candidates: [],
-                source: "indisponível"
+                source: "indisponível",
+                blockchain: { status: "error" }
               };
             }
           })
         );
-        setRecords(enriched);
+        setRecords(baseResults);
+        saveCache("audit-records", baseResults);
+
+        elections.forEach(async (election) => {
+          try {
+            const chainResult = await fetchResults(election.id);
+            if (chainResult.source === "blockchain") {
+              setRecords((prev) => {
+                const next = prev.map((record) =>
+                  record.id === election.id ? formatRecord(chainResult) : record
+                );
+                saveCache("audit-records", next);
+                return next;
+              });
+            }
+          } catch (error) {
+            // Ignore individual blockchain errors for audit refresh
+          }
+        });
       } catch (error) {
         setStatus("Falha ao carregar dados de auditoria.");
       } finally {
@@ -75,6 +102,9 @@ const Auditoria = () => {
               <h3 className="text-lg font-semibold text-white">{record.title}</h3>
               <p className="mt-1 text-xs uppercase tracking-wide text-slate-400">
                 Fonte: {record.source === "blockchain" ? "Blockchain Ethereum" : "Base de dados"}
+                {record.source !== "blockchain" && record.blockchain?.status !== "disabled" && (
+                  <span> (sincronizando blockchain...)</span>
+                )}
               </p>
             </div>
             <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">

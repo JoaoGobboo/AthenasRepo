@@ -1,36 +1,35 @@
 #!/usr/bin/env python3
-"""
-Script de teste de carga para a API de votação Athenas.
-
-Esta ferramenta simula múltiplas carteiras interagindo com os endpoints de autenticação, criação e votação, a fim de gerar dados para o capítulo “Resultados” do TCC.
-Ela se concentra no fluxo de envio de votos, registrando telemetria por requisição e exportando relatórios detalhados e resumidos em formato JSON.
-"""
+"""Load testing script for the Athenas voting API with optional blockchain calls."""
 
 from __future__ import annotations
 
 import argparse
 import json
 import math
+import os
 import random
 import string
 import time
 from dataclasses import dataclass, asdict
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 import requests
+from dotenv import load_dotenv
 from eth_account import Account
 from eth_account.messages import encode_defunct
+from web3 import Web3
+from web3.contract import Contract
 
 API_DEFAULT = "http://localhost:5000/api/v1"
 TOKEN_STORAGE_KEY = "athenas-token"
 
+load_dotenv()
+
 
 @dataclass
 class WalletContext:
-    """Represents a simulated wallet with its authentication token and session."""
-
     address: str
     private_key: str
     token: str
@@ -39,8 +38,6 @@ class WalletContext:
 
 @dataclass
 class RequestRecord:
-    """Captures telemetry for a single HTTP call."""
-
     timestamp: str
     request_index: int
     wallet: str
@@ -84,17 +81,27 @@ class ElectionLoadTester:
         max_retries: int,
         output_dir: Path,
         seed: Optional[int] = None,
+        wallet_file: Optional[Path] = None,
+        rpc_url: Optional[str] = None,
+        contract_address: Optional[str] = None,
+        contract_abi_path: Optional[Path] = None,
     ) -> None:
         if seed is not None:
             random.seed(seed)
         self.base_url = base_url.rstrip("/")
         self.total_votes = total_votes
-        self.wallet_count = wallet_count
+        self.requested_wallets = wallet_count
         self.candidate_names = candidate_names
         self.timeout = timeout
         self.max_retries = max_retries
         self.output_dir = output_dir
         self.output_dir.mkdir(parents=True, exist_ok=True)
+        self.wallet_file = wallet_file
+
+        self.rpc_url = rpc_url or os.getenv("RPC_URL")
+        self.contract_address = contract_address or os.getenv("CONTRACT_ADDRESS")
+        self.contract_abi_path = contract_abi_path or Path("backend/src/blockchain/Voting.json")
+        self.use_blockchain = bool(self.wallet_file and self.rpc_url and self.contract_address)
 
         self.wallets: List[WalletContext] = []
         self.election: Optional[Dict[str, Any]] = None
@@ -102,8 +109,13 @@ class ElectionLoadTester:
         self.request_counter = 0
         self.session = requests.Session()
         self.successful_wallets: Dict[str, bool] = {}
+        self.web3: Optional[Web3] = None
+        self.contract: Optional[Contract] = None
+        self.chain_election_id: Optional[int] = None
+        self.elections_created = 0
 
-    # ---------- Public API ----------
+        if self.use_blockchain:
+            self._init_blockchain()
 
     def run(self) -> None:
         self._prepare_wallets()
@@ -112,26 +124,45 @@ class ElectionLoadTester:
         self._execute_votes()
         self._write_reports()
 
-    # ---------- Setup helpers ----------
+    # ---------- Setup ----------
 
     def _prepare_wallets(self) -> None:
         self.wallets.clear()
-        for _ in range(self.wallet_count):
-            account = Account.create()
-            session = requests.Session()
-            context = WalletContext(
-                address=account.address,
-                private_key=account.key.hex(),
-                token="",
-                session=session,
-            )
-            self.wallets.append(context)
-            self.successful_wallets[context.address] = False
+        if self.wallet_file:
+            wallets_data = json.loads(Path(self.wallet_file).read_text(encoding="utf-8"))
+            for entry in wallets_data:
+                address = entry["address"]
+                private_key = entry["private_key"]
+                if not private_key.startswith("0x"):
+                    private_key = f"0x{private_key}"
+                if self.web3:
+                    address = Web3.to_checksum_address(address)
+                context = WalletContext(
+                    address=address,
+                    private_key=private_key,
+                    token="",
+                    session=requests.Session(),
+                )
+                self.wallets.append(context)
+                self.successful_wallets[context.address] = False
+        else:
+            for _ in range(self.requested_wallets):
+                account = Account.create()
+                context = WalletContext(
+                    address=account.address,
+                    private_key=account.key.hex(),
+                    token="",
+                    session=requests.Session(),
+                )
+                self.wallets.append(context)
+                self.successful_wallets[context.address] = False
+
+        if not self.wallets:
+            raise RuntimeError("At least one wallet is required to execute the test.")
 
     def _authenticate_wallets(self) -> None:
         for wallet in self.wallets:
-            token = self._login_wallet(wallet)
-            wallet.token = token
+            wallet.token = self._login_wallet(wallet)
 
     def _login_wallet(self, wallet: WalletContext) -> str:
         nonce = generate_nonce()
@@ -144,24 +175,31 @@ class ElectionLoadTester:
         }
         response = self._post("/auth/login", payload, wallet)
         response.raise_for_status()
-        data = response.json()
-        return data["access_token"]
+        return response.json()["access_token"]
 
     def _create_election(self) -> None:
-        if not self.wallets:
-            raise RuntimeError("No wallets available to create an election.")
         admin_wallet = self.wallets[0]
+        title = f"Carga Automatizada {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}"
         payload = {
-            "title": f"Carga Automatizada {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')}",
+            "title": title,
             "description": "Cenário gerado pelo voting_load_test.py",
             "candidates": self.candidate_names,
-            "txHash": self._generate_tx_hash(),
         }
+
+        if self.use_blockchain and self.contract:
+            tx_hash, chain_election_id = self._create_election_on_chain(admin_wallet, title)
+            payload["txHash"] = tx_hash
+            self.chain_election_id = chain_election_id
+        else:
+            payload["txHash"] = self._generate_tx_hash()
+
         response = self._post("/elections", payload, admin_wallet)
         response.raise_for_status()
         self.election = response.json()["election"]
+        self.elections_created += 1
+        self._reset_wallet_usage()
 
-    # ---------- Voting loop ----------
+    # ---------- Voting ----------
 
     def _execute_votes(self) -> None:
         if not self.election:
@@ -172,21 +210,64 @@ class ElectionLoadTester:
             raise RuntimeError("Election returned without candidates; cannot proceed.")
 
         for index in range(self.total_votes):
+            if all(self.successful_wallets.values()):
+                self._create_election()
+                candidates = self.election.get("candidates", [])
             wallet = self._select_wallet()
             candidate = random.choice(candidates)
             self._submit_vote(wallet, candidate, index)
 
     def _select_wallet(self) -> WalletContext:
-        pending_wallets = [w for w in self.wallets if not self.successful_wallets[w.address]]
-        pool = pending_wallets or self.wallets
+        unused = [w for w in self.wallets if not self.successful_wallets[w.address]]
+        pool = unused or self.wallets
         return random.choice(pool)
 
     def _submit_vote(self, wallet: WalletContext, candidate: Dict[str, Any], vote_index: int) -> None:
+        tx_hash = None
+        candidate_index = None
+        for idx, entry in enumerate(self.election.get("candidates", [])):
+            if entry["id"] == candidate["id"]:
+                candidate_index = idx
+                break
+
+        if self.use_blockchain and self.contract:
+            if candidate_index is None:
+                self._record_request(
+                    wallet=wallet.address,
+                    candidate=candidate,
+                    payload={},
+                    response_time_ms=0.0,
+                    operation_status="error",
+                    status_code=0,
+                    message="Candidate index not found for blockchain vote",
+                    response_excerpt="Candidate index not found",
+                    attempt=0,
+                )
+                return
+            try:
+                tx_hash = self._vote_on_chain(wallet, candidate_index)
+            except Exception as exc:
+                self._record_request(
+                    wallet=wallet.address,
+                    candidate=candidate,
+                    payload={},
+                    response_time_ms=0.0,
+                    operation_status="error",
+                    status_code=0,
+                    message=str(exc),
+                    response_excerpt=str(exc),
+                    attempt=0,
+                )
+                return
+        else:
+            tx_hash = self._generate_tx_hash()
+
         payload = {
             "electionId": self.election["id"],
             "candidateId": candidate["id"],
-            "txHash": self._generate_tx_hash(),
+            "txHash": tx_hash,
         }
+
         max_attempts = self.max_retries + 1
         for attempt in range(1, max_attempts + 1):
             start = time.perf_counter()
@@ -203,7 +284,6 @@ class ElectionLoadTester:
                 operation_status = "success" if status_code < 400 and body.get("status") == "ok" else "error"
             except requests.RequestException as exc:
                 message = str(exc)
-                response_excerpt = ""
                 status_code = getattr(exc.response, "status_code", 0)
             finally:
                 elapsed_ms = (time.perf_counter() - start) * 1000
@@ -225,20 +305,19 @@ class ElectionLoadTester:
             if attempt < max_attempts:
                 time.sleep(0.2 * attempt)
 
-    # ---------- Networking helpers ----------
+    # ---------- Networking & logging ----------
 
     def _post(self, path: str, payload: Dict[str, Any], wallet: Optional[WalletContext] = None) -> requests.Response:
         url = f"{self.base_url}{path}"
         headers = {}
         if wallet and wallet.token:
             headers["Authorization"] = f"Bearer {wallet.token}"
-        response = (wallet.session if wallet else self.session).post(
+        return (wallet.session if wallet else self.session).post(
             url,
             json=payload,
             headers=headers,
             timeout=self.timeout,
         )
-        return response
 
     @staticmethod
     def _safe_json(response: requests.Response) -> Dict[str, Any]:
@@ -282,8 +361,67 @@ class ElectionLoadTester:
         )
         self.records.append(record)
 
+    def _reset_wallet_usage(self) -> None:
+        for key in self.successful_wallets:
+            self.successful_wallets[key] = False
+
     def _generate_tx_hash(self) -> str:
         return f"0x{random.getrandbits(256):064x}"
+
+    # ---------- Blockchain helpers ----------
+
+    def _init_blockchain(self) -> None:
+        if not self.rpc_url or not self.contract_address:
+            return
+        abi_data = json.loads(Path(self.contract_abi_path).read_text(encoding="utf-8"))
+        abi = abi_data["abi"] if isinstance(abi_data, dict) and "abi" in abi_data else abi_data
+        self.web3 = Web3(Web3.HTTPProvider(self.rpc_url))
+        self.contract = self.web3.eth.contract(
+            address=Web3.to_checksum_address(self.contract_address), abi=abi
+        )
+
+    def _create_election_on_chain(self, wallet: WalletContext, title: str) -> Tuple[str, int]:
+        if not self.contract or not self.web3:
+            raise RuntimeError("Blockchain not configured")
+        tx_function = self.contract.functions.createElection(title, self.candidate_names)
+        tx_hash, receipt = self._send_contract_tx(wallet, tx_function)
+        try:
+            events = self.contract.events.ElectionCreated().process_receipt(receipt)
+            election_id = events[0]["args"]["electionId"] if events else None
+        except Exception:
+            election_id = None
+        if election_id is None:
+            election_id = self.contract.functions.electionCount().call() - 1
+        return tx_hash, election_id
+
+    def _vote_on_chain(self, wallet: WalletContext, candidate_index: int) -> str:
+        if not self.contract:
+            raise RuntimeError("Blockchain not configured")
+        if self.chain_election_id is None:
+            election_count = self.contract.functions.electionCount().call()
+            self.chain_election_id = max(0, election_count - 1)
+        tx_function = self.contract.functions.vote(self.chain_election_id, candidate_index)
+        tx_hash, _ = self._send_contract_tx(wallet, tx_function)
+        return tx_hash
+
+    def _send_contract_tx(self, wallet: WalletContext, tx_function) -> Tuple[str, Any]:
+        if not self.web3:
+            raise RuntimeError("Web3 provider not initialized")
+        account = self.web3.eth.account.from_key(wallet.private_key)
+        nonce = self.web3.eth.get_transaction_count(account.address, 'pending')
+        transaction = tx_function.build_transaction(
+            {
+                "from": account.address,
+                "nonce": nonce,
+                "gasPrice": self.web3.eth.gas_price,
+            }
+        )
+        transaction.setdefault("gas", 500000)
+        signed_tx = self.web3.eth.account.sign_transaction(transaction, wallet.private_key)
+        raw_tx = getattr(signed_tx, "rawTransaction", signed_tx.raw_transaction)
+        tx_hash = self.web3.eth.send_raw_transaction(raw_tx)
+        receipt = self.web3.eth.wait_for_transaction_receipt(tx_hash)
+        return self.web3.to_hex(tx_hash), receipt
 
     # ---------- Reporting ----------
 
@@ -318,10 +456,12 @@ class ElectionLoadTester:
         return {
             "base_url": self.base_url,
             "total_votes": self.total_votes,
-            "wallet_count": self.wallet_count,
+            "wallet_count": len(self.wallets),
             "candidate_names": self.candidate_names,
             "timeout": self.timeout,
             "max_retries": self.max_retries,
+            "blockchain": bool(self.contract),
+            "elections_created": self.elections_created,
         }
 
     def _summarize_records(self) -> Dict[str, Any]:
@@ -360,52 +500,22 @@ class ElectionLoadTester:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Simulação de carga para o backend de votação")
+    parser.add_argument("--base-url", default=API_DEFAULT)
+    parser.add_argument("--votes", type=int, default=100)
+    parser.add_argument("--wallets", type=int, default=120)
+    parser.add_argument("--candidates", nargs="+", default=["Alice", "Bob", "Carol"])
+    parser.add_argument("--timeout", type=float, default=10.0)
+    parser.add_argument("--retries", type=int, default=2)
+    parser.add_argument("--output-dir", type=Path, default=Path("backend/tests/results"))
+    parser.add_argument("--seed", type=int, default=None)
+    parser.add_argument("--wallet-file", type=Path, default=None)
+    parser.add_argument("--rpc-url", default=os.getenv("RPC_URL"))
+    parser.add_argument("--contract-address", default=os.getenv("CONTRACT_ADDRESS"))
     parser.add_argument(
-        "--base-url",
-        default=API_DEFAULT,
-        help=f"Endpoint base da API (padrão: {API_DEFAULT})",
-    )
-    parser.add_argument(
-        "--votes",
-        type=int,
-        default=100,
-        help="Quantidade de requisições de voto a serem enviadas (padrão: 100)",
-    )
-    parser.add_argument(
-        "--wallets",
-        type=int,
-        default=120,
-        help="Número de carteiras simuladas (padrão: 120)",
-    )
-    parser.add_argument(
-        "--candidates",
-        nargs="+",
-        default=["Alice", "Bob", "Carol"],
-        help="Lista de nomes de candidatos para a eleição criada pela simulação",
-    )
-    parser.add_argument(
-        "--timeout",
-        type=float,
-        default=10.0,
-        help="Tempo máximo de espera por requisição em segundos (padrão: 10)",
-    )
-    parser.add_argument(
-        "--retries",
-        type=int,
-        default=2,
-        help="Número de tentativas extras em caso de erro (padrão: 2)",
-    )
-    parser.add_argument(
-        "--output-dir",
+        "--contract-abi",
         type=Path,
-        default=Path("backend/tests/results"),
-        help="Diretório para salvar os relatórios JSON",
-    )
-    parser.add_argument(
-        "--seed",
-        type=int,
-        default=None,
-        help="Seed opcional para reprodução dos testes",
+        default=Path("backend/src/blockchain/Voting.json"),
+        help="Arquivo contendo o ABI ou Voting.json",
     )
     return parser.parse_args()
 
@@ -421,6 +531,10 @@ def main() -> None:
         max_retries=args.retries,
         output_dir=args.output_dir,
         seed=args.seed,
+        wallet_file=args.wallet_file,
+        rpc_url=args.rpc_url,
+        contract_address=args.contract_address,
+        contract_abi_path=args.contract_abi,
     )
     tester.run()
 

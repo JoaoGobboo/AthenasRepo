@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchElections, submitVote } from "../services/api.js";
 import { voteOnChain } from "../services/blockchain.js";
+import { loadCache, saveCache } from "../utils/cache.js";
 
 const Votacao = ({ wallet }) => {
   const { id } = useParams();
@@ -10,14 +11,44 @@ const Votacao = ({ wallet }) => {
   const [selectedCandidate, setSelectedCandidate] = useState(null);
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
+  const CACHE_KEY = "dashboard-elections";
+  const CACHE_TTL_SECONDS = 30;
 
   useEffect(() => {
-    const loadElection = async () => {
-      const elections = await fetchElections();
-      const found = elections.find((item) => item.id === Number(id));
-      setElection(found || null);
+    let active = true;
+    const hydrateFromCache = () => {
+      const cached = loadCache(CACHE_KEY, CACHE_TTL_SECONDS);
+      if (cached) {
+        const found = cached.find((item) => item.id === Number(id));
+        if (found) {
+          setElection(found);
+        }
+      }
     };
+
+    const loadElection = async () => {
+      try {
+        const elections = await fetchElections();
+        if (!active) {
+          return;
+        }
+        saveCache(CACHE_KEY, elections);
+        const found = elections.find((item) => item.id === Number(id));
+        setElection(found || null);
+      } catch (error) {
+        if (active) {
+          setElection(null);
+          setStatus("Erro ao carregar eleição.");
+        }
+      }
+    };
+
+    hydrateFromCache();
     loadElection();
+
+    return () => {
+      active = false;
+    };
   }, [id]);
 
   const handleSubmit = async (event) => {

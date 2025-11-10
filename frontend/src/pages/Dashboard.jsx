@@ -59,7 +59,6 @@ const Dashboard = () => {
         return;
       }
       const txHash = await createElectionOnChain(form.title, candidates);
-      const txHash = await createElectionOnChain(form.title, candidates);
       await createElection({
         title: form.title,
         description: form.description,

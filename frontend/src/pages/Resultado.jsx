@@ -1,61 +1,37 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GraficoResultados from "../components/GraficoResultados.jsx";
-import { fetchResults } from "../services/api.js";
-import { loadCache, saveCache } from "../utils/cache.js";
+import useResultsStore from "../store/useResultsStore.js";
 
 const Resultado = () => {
   const { id } = useParams();
-  const [results, setResults] = useState(null);
+  const electionId = Number(id);
+  const fetchResult = useResultsStore((state) => state.fetchResult);
+  const items = useResultsStore((state) => state.items);
+  const loadingChain = useResultsStore((state) => state.loadingChain);
   const [status, setStatus] = useState("");
-  const [isBlockchainLoading, setIsBlockchainLoading] = useState(false);
-  const CACHE_KEY = `result-${id}`;
-  const CACHE_TTL_SECONDS = 60;
+
+  const entry = items[electionId];
+  const results = entry?.chain?.data || entry?.db?.data || null;
+  const isBlockchainLoading = Boolean(loadingChain[electionId]);
 
   useEffect(() => {
     let active = true;
-    const loadResults = async () => {
+    const load = async () => {
       setStatus("");
-      setIsBlockchainLoading(true);
       try {
-        const cached = loadCache(CACHE_KEY, CACHE_TTL_SECONDS);
-        if (cached) {
-          setResults(cached);
-        }
-        const dbData = await fetchResults(id, { includeBlockchain: false });
-        if (!active) {
-          return;
-        }
-        setResults(dbData);
-        saveCache(CACHE_KEY, dbData);
-        if (dbData.source === "blockchain") {
-          setIsBlockchainLoading(false);
-          return;
-        }
-        const chainData = await fetchResults(id);
-        if (!active) {
-          return;
-        }
-        if (chainData.source === "blockchain") {
-          setResults(chainData);
-          saveCache(CACHE_KEY, chainData);
-        }
+        await fetchResult(electionId);
       } catch (error) {
-        if (!active) {
-          return;
-        }
-        setStatus("Erro ao carregar resultados.");
-      } finally {
         if (active) {
-          setIsBlockchainLoading(false);
+          setStatus("Erro ao carregar resultados.");
         }
       }
     };
-    loadResults();
+    load();
     return () => {
       active = false;
     };
-  }, [id]);
+  }, [electionId, fetchResult]);
 
   if (!results) {
     return (

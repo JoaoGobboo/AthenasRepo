@@ -1,55 +1,25 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchElections, submitVote } from "../services/api.js";
+import { submitVote } from "../services/api.js";
 import { voteOnChain } from "../services/blockchain.js";
-import { loadCache, saveCache } from "../utils/cache.js";
+import useElectionsStore from "../store/useElectionsStore.js";
 
 const Votacao = ({ wallet }) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [election, setElection] = useState(null);
+  const elections = useElectionsStore((state) => state.elections);
+  const fetchElections = useElectionsStore((state) => state.fetchElections);
+  const listLoading = useElectionsStore((state) => state.loading);
+
   const [selectedCandidate, setSelectedCandidate] = useState(null);
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
-  const CACHE_KEY = "dashboard-elections";
-  const CACHE_TTL_SECONDS = 30;
+  const electionId = Number(id);
+  const election = elections.find((item) => item.id === electionId);
 
   useEffect(() => {
-    let active = true;
-    const hydrateFromCache = () => {
-      const cached = loadCache(CACHE_KEY, CACHE_TTL_SECONDS);
-      if (cached) {
-        const found = cached.find((item) => item.id === Number(id));
-        if (found) {
-          setElection(found);
-        }
-      }
-    };
-
-    const loadElection = async () => {
-      try {
-        const elections = await fetchElections();
-        if (!active) {
-          return;
-        }
-        saveCache(CACHE_KEY, elections);
-        const found = elections.find((item) => item.id === Number(id));
-        setElection(found || null);
-      } catch (error) {
-        if (active) {
-          setElection(null);
-          setStatus("Erro ao carregar eleição.");
-        }
-      }
-    };
-
-    hydrateFromCache();
-    loadElection();
-
-    return () => {
-      active = false;
-    };
-  }, [id]);
+    fetchElections();
+  }, [fetchElections]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -57,10 +27,14 @@ const Votacao = ({ wallet }) => {
       setStatus("Selecione um candidato antes de votar.");
       return;
     }
+    if (!election) {
+      setStatus("Eleição não encontrada.");
+      return;
+    }
     setLoading(true);
     setStatus("");
     try {
-      const chainElectionId = Math.max(0, Number(id) - 1);
+      const chainElectionId = Math.max(0, electionId - 1);
       const candidateIndex = election.candidates.findIndex(
         (candidate) => candidate.id === Number(selectedCandidate)
       );
@@ -90,7 +64,7 @@ const Votacao = ({ wallet }) => {
   if (!election) {
     return (
       <div className="rounded-xl border border-slate-800 bg-slate-950/40 p-6 text-sm text-slate-300">
-        Carregando eleição...
+        {listLoading ? "Carregando eleição..." : "Eleição não encontrada."}
       </div>
     );
   }

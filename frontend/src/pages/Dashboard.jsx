@@ -1,45 +1,24 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CardEleicao from "../components/CardEleicao.jsx";
-import { createElection, fetchElections } from "../services/api.js";
+import { createElection } from "../services/api.js";
 import { createElectionOnChain } from "../services/blockchain.js";
-import { loadCache, saveCache, clearCacheKey } from "../utils/cache.js";
+import useElectionsStore from "../store/useElectionsStore.js";
 
 const Dashboard = () => {
-  const [elections, setElections] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const elections = useElectionsStore((state) => state.elections);
+  const listLoading = useElectionsStore((state) => state.loading);
+  const fetchElections = useElectionsStore((state) => state.fetchElections);
+  const invalidateElections = useElectionsStore((state) => state.invalidate);
+
+  const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({ title: "", description: "", candidates: "" });
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  const CACHE_KEY = "dashboard-elections";
-  const CACHE_TTL_SECONDS = 30;
-
-  const loadElections = async ({ forceRefresh = false } = {}) => {
-    try {
-      if (!forceRefresh) {
-        const cached = loadCache(CACHE_KEY, CACHE_TTL_SECONDS);
-        if (cached) {
-          setElections(cached);
-        }
-      }
-      setLoading(true);
-      const data = await fetchElections();
-      setElections(data);
-      saveCache(CACHE_KEY, data);
-    } catch (error) {
-      setMessage("Erro ao carregar eleições.");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   useEffect(() => {
-    const cached = loadCache(CACHE_KEY, CACHE_TTL_SECONDS);
-    if (cached) {
-      setElections(cached);
-    }
-    loadElections({ forceRefresh: true });
-  }, []);
+    fetchElections();
+  }, [fetchElections]);
 
   const handleChange = (event) => {
     setForm((prev) => ({ ...prev, [event.target.name]: event.target.value }));
@@ -47,7 +26,7 @@ const Dashboard = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setLoading(true);
+    setSubmitting(true);
     setMessage("");
     try {
       const candidates = form.candidates
@@ -67,8 +46,8 @@ const Dashboard = () => {
       });
       setForm({ title: "", description: "", candidates: "" });
       setMessage("Eleição criada com sucesso!");
-      clearCacheKey(CACHE_KEY);
-      await loadElections({ forceRefresh: true });
+      invalidateElections();
+      await fetchElections({ forceRefresh: true });
     } catch (error) {
       if (error?.code === 4001) {
         setMessage("Transação cancelada pelo usuário.");
@@ -76,7 +55,7 @@ const Dashboard = () => {
         setMessage(error.response?.data?.message || error.message || "Erro ao criar eleição.");
       }
     } finally {
-      setLoading(false);
+      setSubmitting(false);
     }
   };
 
@@ -124,10 +103,10 @@ const Dashboard = () => {
           </div>
           <button
             type="submit"
-            disabled={loading}
+            disabled={submitting}
             className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-blue-600 disabled:bg-blue-400"
           >
-            {loading ? "Criando..." : "Criar eleição"}
+            {submitting ? "Criando..." : "Criar eleição"}
           </button>
         </form>
         {message && <p className="mt-4 text-sm text-slate-300">{message}</p>}
@@ -138,7 +117,7 @@ const Dashboard = () => {
           <h2 className="text-lg font-semibold text-white">Eleições disponíveis</h2>
           <button
             type="button"
-            onClick={() => loadElections({ forceRefresh: true })}
+            onClick={() => fetchElections({ forceRefresh: true })}
             className="rounded-md border border-slate-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-200 hover:border-primary hover:text-primary"
           >
             Atualizar
@@ -153,9 +132,14 @@ const Dashboard = () => {
               onResults={handleResults}
             />
           ))}
-          {!elections.length && (
+          {!listLoading && !elections.length && (
             <div className="rounded-xl border border-dashed border-slate-700 p-10 text-center text-sm text-slate-400">
               Nenhuma eleição cadastrada ainda.
+            </div>
+          )}
+          {listLoading && (
+            <div className="rounded-xl border border-slate-800 bg-slate-950/40 p-6 text-sm text-slate-300">
+              Carregando eleições...
             </div>
           )}
         </div>

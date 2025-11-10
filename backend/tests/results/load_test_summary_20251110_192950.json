@@ -1,0 +1,40 @@
+{
+  "generated_at": "2025-11-10T19:29:50.678965",
+  "config": {
+    "base_url": "http://localhost:5000/api/v1",
+    "total_votes": 3,
+    "wallet_count": 3,
+    "candidate_names": [
+      "Alice",
+      "Bob",
+      "Carol"
+    ],
+    "timeout": 10.0,
+    "max_retries": 2,
+    "blockchain": true,
+    "elections_created": 1
+  },
+  "stats": {
+    "total_requests": 3,
+    "success_count": 1,
+    "failure_count": 2,
+    "success_rate": 33.33,
+    "failure_rate": 66.67,
+    "latency_ms": {
+      "avg": 8.72,
+      "p50": 0.0,
+      "p95": 23.53,
+      "p99": 25.63,
+      "min": 0.0,
+      "max": 26.15
+    },
+    "error_types": {
+      "0": {
+        "count": 2,
+        "messages": {
+          "{'code': -32000, 'message': 'gas required exceeds allowance (0)'}": 2
+        }
+      }
+    }
+  }
+}

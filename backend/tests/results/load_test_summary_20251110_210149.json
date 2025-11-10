@@ -1,0 +1,33 @@
+{
+  "generated_at": "2025-11-10T21:01:49.386193",
+  "config": {
+    "base_url": "http://localhost:5000/api/v1",
+    "total_votes": 100,
+    "wallet_count": 8,
+    "candidate_names": [
+      "Alice",
+      "Bob",
+      "Carol"
+    ],
+    "timeout": 10.0,
+    "max_retries": 2,
+    "blockchain": true,
+    "elections_created": 13
+  },
+  "stats": {
+    "total_requests": 100,
+    "success_count": 100,
+    "failure_count": 0,
+    "success_rate": 100.0,
+    "failure_rate": 0.0,
+    "latency_ms": {
+      "avg": 25.94,
+      "p50": 24.93,
+      "p95": 37.9,
+      "p99": 44.87,
+      "min": 16.04,
+      "max": 46.03
+    },
+    "error_types": {}
+  }
+}

@@ -1,0 +1,1937 @@
+{
+  "generated_at": "2025-11-10T21:01:49.379279",
+  "config": {
+    "base_url": "http://localhost:5000/api/v1",
+    "total_votes": 100,
+    "wallet_count": 8,
+    "candidate_names": [
+      "Alice",
+      "Bob",
+      "Carol"
+    ],
+    "timeout": 10.0,
+    "max_retries": 2,
+    "blockchain": true,
+    "elections_created": 13
+  },
+  "election": {
+    "id": 78,
+    "title": "Carga Automatizada 2025-11-10 21:00:37",
+    "candidates": [
+      {
+        "id": 4,
+        "name": "Alice"
+      },
+      {
+        "id": 5,
+        "name": "Bob"
+      },
+      {
+        "id": 6,
+        "name": "Carol"
+      }
+    ]
+  },
+  "records": [
+    {
+      "timestamp": "2025-11-10T20:34:37.188053+00:00",
+      "request_index": 1,
+      "wallet": "0x69918BA35fAd5E5Fd8DCf5464D0d07a9d7519199",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 66,
+        "candidateId": 5,
+        "txHash": "0x9cb1d828efde238571f23441f1f6eff6ffa4fe67d3ff3704eb6f48a27aaaf8cf"
+      },
+      "response_time_ms": 29.44,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x9cb1d828efde238571f23441f1f6eff6ffa4fe67d3ff3704eb6f48a27aaaf8cf\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:34:37.166807\", \"election_id\": 66, \"id\": 279, \"tx_hash\": \"0x9cb1d828efde238571f23441f1f6eff6ffa4fe67d3ff3704eb6f48a27aaaf8cf\", \"voter_id\": 389}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:34:49.800188+00:00",
+      "request_index": 2,
+      "wallet": "0xcC8bD677e34F3121458d920b23c1309f39d538cB",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 66,
+        "candidateId": 4,
+        "txHash": "0xb6acf4722bdb1e085162944213c32165059043691c060db01c5435e378010344"
+      },
+      "response_time_ms": 26.17,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xb6acf4722bdb1e085162944213c32165059043691c060db01c5435e378010344\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:34:49.782954\", \"election_id\": 66, \"id\": 280, \"tx_hash\": \"0xb6acf4722bdb1e085162944213c32165059043691c060db01c5435e378010344\", \"voter_id\": 385}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:35:00.716276+00:00",
+      "request_index": 3,
+      "wallet": "0x3224aA453cBd2d4746596462eA1f9C91a3656813",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 66,
+        "candidateId": 4,
+        "txHash": "0x534b2a934e094481485598c64c381c3b03629525d69c6a69bf30456817c9dea1"
+      },
+      "response_time_ms": 23.37,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x534b2a934e094481485598c64c381c3b03629525d69c6a69bf30456817c9dea1\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:35:00.699913\", \"election_id\": 66, \"id\": 281, \"tx_hash\": \"0x534b2a934e094481485598c64c381c3b03629525d69c6a69bf30456817c9dea1\", \"voter_id\": 390}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:35:12.934157+00:00",
+      "request_index": 4,
+      "wallet": "0x0B64bFCd4201276e1c7fcd77a214D0a0a538eA3f",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 66,
+        "candidateId": 5,
+        "txHash": "0xd7e2899c1c770d933f11f640568663ac25d820bc2263d1b479a1dda41bf32613"
+      },
+      "response_time_ms": 25.03,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xd7e2899c1c770d933f11f640568663ac25d820bc2263d1b479a1dda41bf32613\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:35:12.917036\", \"election_id\": 66, \"id\": 282, \"tx_hash\": \"0xd7e2899c1c770d933f11f640568663ac25d820bc2263d1b479a1dda41bf32613\", \"voter_id\": 1}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:35:24.892749+00:00",
+      "request_index": 5,
+      "wallet": "0x0357C66D4e0136ABe64613CEE4d42515cDE034F1",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 66,
+        "candidateId": 6,
+        "txHash": "0x631412104b384427ab005bdbbea92a86882cecf8594ad160337264e0c77b98b1"
+      },
+      "response_time_ms": 19.86,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x631412104b384427ab005bdbbea92a86882cecf8594ad160337264e0c77b98b1\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:35:24.879984\", \"election_id\": 66, \"id\": 283, \"tx_hash\": \"0x631412104b384427ab005bdbbea92a86882cecf8594ad160337264e0c77b98b1\", \"voter_id\": 388}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:35:37.284921+00:00",
+      "request_index": 6,
+      "wallet": "0x6904AfC867c22294b1AaA24a5Dc6fda3dA374cb6",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 66,
+        "candidateId": 5,
+        "txHash": "0x4c6502bd2800c6117fb8eca1d25482c6d308e38fabfe14dd269600e419c71e9f"
+      },
+      "response_time_ms": 20.59,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x4c6502bd2800c6117fb8eca1d25482c6d308e38fabfe14dd269600e419c71e9f\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:35:37.270592\", \"election_id\": 66, \"id\": 284, \"tx_hash\": \"0x4c6502bd2800c6117fb8eca1d25482c6d308e38fabfe14dd269600e419c71e9f\", \"voter_id\": 386}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:35:49.650584+00:00",
+      "request_index": 7,
+      "wallet": "0x6F6C505ae08f7bB7Da6E38A898c7Bb824717a30D",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 66,
+        "candidateId": 5,
+        "txHash": "0xd3214751dac0bdc20b818901ffb1f930efd95842d403c481a205872b3e7346d1"
+      },
+      "response_time_ms": 16.56,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xd3214751dac0bdc20b818901ffb1f930efd95842d403c481a205872b3e7346d1\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:35:49.640805\", \"election_id\": 66, \"id\": 285, \"tx_hash\": \"0xd3214751dac0bdc20b818901ffb1f930efd95842d403c481a205872b3e7346d1\", \"voter_id\": 384}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:36:01.240217+00:00",
+      "request_index": 8,
+      "wallet": "0x6b9F6cddAaa5cEC5a91aEE6fCA3B5B19175bA885",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 66,
+        "candidateId": 6,
+        "txHash": "0x9995e6764a12e8de0010859f4ae3d443943ae9d02142bc2ff5611cb9242453e5"
+      },
+      "response_time_ms": 21.78,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x9995e6764a12e8de0010859f4ae3d443943ae9d02142bc2ff5611cb9242453e5\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:36:01.226040\", \"election_id\": 66, \"id\": 286, \"tx_hash\": \"0x9995e6764a12e8de0010859f4ae3d443943ae9d02142bc2ff5611cb9242453e5\", \"voter_id\": 387}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:36:26.125497+00:00",
+      "request_index": 9,
+      "wallet": "0x6904AfC867c22294b1AaA24a5Dc6fda3dA374cb6",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 67,
+        "candidateId": 5,
+        "txHash": "0xeb04dc2114fd84cc7320b9e1bcc10f25696eb22cb37d2135409c07cddb4a9e1f"
+      },
+      "response_time_ms": 19.06,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xeb04dc2114fd84cc7320b9e1bcc10f25696eb22cb37d2135409c07cddb4a9e1f\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:36:26.114276\", \"election_id\": 67, \"id\": 287, \"tx_hash\": \"0xeb04dc2114fd84cc7320b9e1bcc10f25696eb22cb37d2135409c07cddb4a9e1f\", \"voter_id\": 386}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:36:36.959839+00:00",
+      "request_index": 10,
+      "wallet": "0x3224aA453cBd2d4746596462eA1f9C91a3656813",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 67,
+        "candidateId": 6,
+        "txHash": "0x9843fe7642c2ea110b49e82c8f9842295ba770fe8f245397db8cdca8bb4cbd3a"
+      },
+      "response_time_ms": 26.9,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x9843fe7642c2ea110b49e82c8f9842295ba770fe8f245397db8cdca8bb4cbd3a\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:36:36.939342\", \"election_id\": 67, \"id\": 288, \"tx_hash\": \"0x9843fe7642c2ea110b49e82c8f9842295ba770fe8f245397db8cdca8bb4cbd3a\", \"voter_id\": 390}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:36:48.930106+00:00",
+      "request_index": 11,
+      "wallet": "0x69918BA35fAd5E5Fd8DCf5464D0d07a9d7519199",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 67,
+        "candidateId": 6,
+        "txHash": "0x0ca5046d6eb07e7630cd1dad25a9cbec8799657c99877868906ba90f0d1d0d61"
+      },
+      "response_time_ms": 19.93,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x0ca5046d6eb07e7630cd1dad25a9cbec8799657c99877868906ba90f0d1d0d61\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:36:48.916760\", \"election_id\": 67, \"id\": 289, \"tx_hash\": \"0x0ca5046d6eb07e7630cd1dad25a9cbec8799657c99877868906ba90f0d1d0d61\", \"voter_id\": 389}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:37:01.285873+00:00",
+      "request_index": 12,
+      "wallet": "0x0B64bFCd4201276e1c7fcd77a214D0a0a538eA3f",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 67,
+        "candidateId": 4,
+        "txHash": "0x4d3eae17423003a14c6d441c94927e9b1dc530c99c6da571b47b0706d594f3fe"
+      },
+      "response_time_ms": 30.21,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x4d3eae17423003a14c6d441c94927e9b1dc530c99c6da571b47b0706d594f3fe\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:37:01.265110\", \"election_id\": 67, \"id\": 290, \"tx_hash\": \"0x4d3eae17423003a14c6d441c94927e9b1dc530c99c6da571b47b0706d594f3fe\", \"voter_id\": 1}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:37:13.589207+00:00",
+      "request_index": 13,
+      "wallet": "0x6F6C505ae08f7bB7Da6E38A898c7Bb824717a30D",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 67,
+        "candidateId": 4,
+        "txHash": "0x83d9035d4b407b8d6afd12dd58dc03b95953db231f5bcaa219c524c079b35130"
+      },
+      "response_time_ms": 23.51,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x83d9035d4b407b8d6afd12dd58dc03b95953db231f5bcaa219c524c079b35130\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:37:13.574469\", \"election_id\": 67, \"id\": 291, \"tx_hash\": \"0x83d9035d4b407b8d6afd12dd58dc03b95953db231f5bcaa219c524c079b35130\", \"voter_id\": 384}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:37:26.037296+00:00",
+      "request_index": 14,
+      "wallet": "0x0357C66D4e0136ABe64613CEE4d42515cDE034F1",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 67,
+        "candidateId": 6,
+        "txHash": "0xebb1f909f086e8256fc120b87aa7797b35548a68e03192080f2a9690f17ab721"
+      },
+      "response_time_ms": 23.56,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xebb1f909f086e8256fc120b87aa7797b35548a68e03192080f2a9690f17ab721\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:37:26.022764\", \"election_id\": 67, \"id\": 292, \"tx_hash\": \"0xebb1f909f086e8256fc120b87aa7797b35548a68e03192080f2a9690f17ab721\", \"voter_id\": 388}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:37:36.864122+00:00",
+      "request_index": 15,
+      "wallet": "0xcC8bD677e34F3121458d920b23c1309f39d538cB",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 67,
+        "candidateId": 6,
+        "txHash": "0xf571612dbebe623c50634448cf8ed2bb9a20aac6e98c3d772475523fd7b299e6"
+      },
+      "response_time_ms": 37.86,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xf571612dbebe623c50634448cf8ed2bb9a20aac6e98c3d772475523fd7b299e6\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:37:36.834727\", \"election_id\": 67, \"id\": 293, \"tx_hash\": \"0xf571612dbebe623c50634448cf8ed2bb9a20aac6e98c3d772475523fd7b299e6\", \"voter_id\": 385}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:37:49.880671+00:00",
+      "request_index": 16,
+      "wallet": "0x6b9F6cddAaa5cEC5a91aEE6fCA3B5B19175bA885",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 67,
+        "candidateId": 4,
+        "txHash": "0xd38b58e633b19de58575d80e1d741cc5b8965e86bdfc912543b9e5f3273f4c3e"
+      },
+      "response_time_ms": 16.04,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xd38b58e633b19de58575d80e1d741cc5b8965e86bdfc912543b9e5f3273f4c3e\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:37:49.871085\", \"election_id\": 67, \"id\": 294, \"tx_hash\": \"0xd38b58e633b19de58575d80e1d741cc5b8965e86bdfc912543b9e5f3273f4c3e\", \"voter_id\": 387}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:38:14.028680+00:00",
+      "request_index": 17,
+      "wallet": "0xcC8bD677e34F3121458d920b23c1309f39d538cB",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 68,
+        "candidateId": 4,
+        "txHash": "0x8056ca47a147dd7140af7638d4039980172bf63c2a4e7d34f5d2b51396875de4"
+      },
+      "response_time_ms": 17.43,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x8056ca47a147dd7140af7638d4039980172bf63c2a4e7d34f5d2b51396875de4\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:38:14.018164\", \"election_id\": 68, \"id\": 295, \"tx_hash\": \"0x8056ca47a147dd7140af7638d4039980172bf63c2a4e7d34f5d2b51396875de4\", \"voter_id\": 385}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:38:25.489246+00:00",
+      "request_index": 18,
+      "wallet": "0x6904AfC867c22294b1AaA24a5Dc6fda3dA374cb6",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 68,
+        "candidateId": 6,
+        "txHash": "0x8a8db2ed88b954e957474193085a33c301af832bb65e78d1daf90fdf5bfd5d64"
+      },
+      "response_time_ms": 23.59,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x8a8db2ed88b954e957474193085a33c301af832bb65e78d1daf90fdf5bfd5d64\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:38:25.473989\", \"election_id\": 68, \"id\": 296, \"tx_hash\": \"0x8a8db2ed88b954e957474193085a33c301af832bb65e78d1daf90fdf5bfd5d64\", \"voter_id\": 386}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:38:37.224916+00:00",
+      "request_index": 19,
+      "wallet": "0x69918BA35fAd5E5Fd8DCf5464D0d07a9d7519199",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 68,
+        "candidateId": 4,
+        "txHash": "0x88f462bc84481e1cc64070c1910fb9801ed4331030d06132bc28b492083a5221"
+      },
+      "response_time_ms": 22.52,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x88f462bc84481e1cc64070c1910fb9801ed4331030d06132bc28b492083a5221\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:38:37.209728\", \"election_id\": 68, \"id\": 297, \"tx_hash\": \"0x88f462bc84481e1cc64070c1910fb9801ed4331030d06132bc28b492083a5221\", \"voter_id\": 389}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:38:49.771924+00:00",
+      "request_index": 20,
+      "wallet": "0x6b9F6cddAaa5cEC5a91aEE6fCA3B5B19175bA885",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 68,
+        "candidateId": 4,
+        "txHash": "0x6cd09100edd028533bd3842b43d172e58c8fac174a753841e082bdd51ab85300"
+      },
+      "response_time_ms": 23.86,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x6cd09100edd028533bd3842b43d172e58c8fac174a753841e082bdd51ab85300\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:38:49.756967\", \"election_id\": 68, \"id\": 298, \"tx_hash\": \"0x6cd09100edd028533bd3842b43d172e58c8fac174a753841e082bdd51ab85300\", \"voter_id\": 387}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:39:01.001157+00:00",
+      "request_index": 21,
+      "wallet": "0x0B64bFCd4201276e1c7fcd77a214D0a0a538eA3f",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 68,
+        "candidateId": 4,
+        "txHash": "0xd7cccd6d95b7f0f59c4cd07590a98315ee2afa9a4301ccc245441490061c8ed1"
+      },
+      "response_time_ms": 17.6,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xd7cccd6d95b7f0f59c4cd07590a98315ee2afa9a4301ccc245441490061c8ed1\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:39:00.990892\", \"election_id\": 68, \"id\": 299, \"tx_hash\": \"0xd7cccd6d95b7f0f59c4cd07590a98315ee2afa9a4301ccc245441490061c8ed1\", \"voter_id\": 1}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:39:25.286062+00:00",
+      "request_index": 22,
+      "wallet": "0x3224aA453cBd2d4746596462eA1f9C91a3656813",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 68,
+        "candidateId": 5,
+        "txHash": "0x00720aaa1386333b16ea8a1850829e77ac9aa5d6646ed087c288f9bb43ffef53"
+      },
+      "response_time_ms": 19.01,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x00720aaa1386333b16ea8a1850829e77ac9aa5d6646ed087c288f9bb43ffef53\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:39:25.275195\", \"election_id\": 68, \"id\": 300, \"tx_hash\": \"0x00720aaa1386333b16ea8a1850829e77ac9aa5d6646ed087c288f9bb43ffef53\", \"voter_id\": 390}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:39:49.058831+00:00",
+      "request_index": 23,
+      "wallet": "0x6F6C505ae08f7bB7Da6E38A898c7Bb824717a30D",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 68,
+        "candidateId": 4,
+        "txHash": "0xa5568fb7d15fc0a48974ba8811ea9510b024e864ab0e0393b1d57f4a7499df67"
+      },
+      "response_time_ms": 22.66,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xa5568fb7d15fc0a48974ba8811ea9510b024e864ab0e0393b1d57f4a7499df67\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:39:49.044425\", \"election_id\": 68, \"id\": 301, \"tx_hash\": \"0xa5568fb7d15fc0a48974ba8811ea9510b024e864ab0e0393b1d57f4a7499df67\", \"voter_id\": 384}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:40:25.068742+00:00",
+      "request_index": 24,
+      "wallet": "0x0357C66D4e0136ABe64613CEE4d42515cDE034F1",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 68,
+        "candidateId": 6,
+        "txHash": "0xd9174a81e7bf3a05c9fccc5ea9a1e2787a555f8a6995088b03ede535680c73a9"
+      },
+      "response_time_ms": 24.24,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xd9174a81e7bf3a05c9fccc5ea9a1e2787a555f8a6995088b03ede535680c73a9\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:40:25.053801\", \"election_id\": 68, \"id\": 302, \"tx_hash\": \"0xd9174a81e7bf3a05c9fccc5ea9a1e2787a555f8a6995088b03ede535680c73a9\", \"voter_id\": 388}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:40:49.913119+00:00",
+      "request_index": 25,
+      "wallet": "0x6F6C505ae08f7bB7Da6E38A898c7Bb824717a30D",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 69,
+        "candidateId": 4,
+        "txHash": "0xc076984de9559f5f6a10eb364cdc8a3759c85a351af666013ea0c3642e1d3589"
+      },
+      "response_time_ms": 22.84,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xc076984de9559f5f6a10eb364cdc8a3759c85a351af666013ea0c3642e1d3589\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:40:49.897963\", \"election_id\": 69, \"id\": 303, \"tx_hash\": \"0xc076984de9559f5f6a10eb364cdc8a3759c85a351af666013ea0c3642e1d3589\", \"voter_id\": 384}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:41:12.998863+00:00",
+      "request_index": 26,
+      "wallet": "0x69918BA35fAd5E5Fd8DCf5464D0d07a9d7519199",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 69,
+        "candidateId": 5,
+        "txHash": "0x6b86b4c1087a13dc37d21f27251b6466c164f43d4283788f04a97b837fffc1a0"
+      },
+      "response_time_ms": 24.46,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x6b86b4c1087a13dc37d21f27251b6466c164f43d4283788f04a97b837fffc1a0\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:41:12.981662\", \"election_id\": 69, \"id\": 304, \"tx_hash\": \"0x6b86b4c1087a13dc37d21f27251b6466c164f43d4283788f04a97b837fffc1a0\", \"voter_id\": 389}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:41:49.048061+00:00",
+      "request_index": 27,
+      "wallet": "0x6b9F6cddAaa5cEC5a91aEE6fCA3B5B19175bA885",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 69,
+        "candidateId": 4,
+        "txHash": "0x47c6de461bbb25f5d74db174196dfec56aef18156aa82686b547eda11cee5a19"
+      },
+      "response_time_ms": 23.33,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x47c6de461bbb25f5d74db174196dfec56aef18156aa82686b547eda11cee5a19\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:41:49.033067\", \"election_id\": 69, \"id\": 305, \"tx_hash\": \"0x47c6de461bbb25f5d74db174196dfec56aef18156aa82686b547eda11cee5a19\", \"voter_id\": 387}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:42:01.905012+00:00",
+      "request_index": 28,
+      "wallet": "0xcC8bD677e34F3121458d920b23c1309f39d538cB",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 69,
+        "candidateId": 4,
+        "txHash": "0x765cee8b532435b17de857cfe9c2d2bd8b1534f3e0367c0a716d652730421d5d"
+      },
+      "response_time_ms": 31.41,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x765cee8b532435b17de857cfe9c2d2bd8b1534f3e0367c0a716d652730421d5d\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:42:01.882412\", \"election_id\": 69, \"id\": 306, \"tx_hash\": \"0x765cee8b532435b17de857cfe9c2d2bd8b1534f3e0367c0a716d652730421d5d\", \"voter_id\": 385}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:42:12.846896+00:00",
+      "request_index": 29,
+      "wallet": "0x3224aA453cBd2d4746596462eA1f9C91a3656813",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 69,
+        "candidateId": 5,
+        "txHash": "0xffcd036632eced9be3af5f087ab5e6b01faa7db395408de02635d4718424ce43"
+      },
+      "response_time_ms": 18.9,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xffcd036632eced9be3af5f087ab5e6b01faa7db395408de02635d4718424ce43\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:42:12.835507\", \"election_id\": 69, \"id\": 307, \"tx_hash\": \"0xffcd036632eced9be3af5f087ab5e6b01faa7db395408de02635d4718424ce43\", \"voter_id\": 390}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:42:48.851376+00:00",
+      "request_index": 30,
+      "wallet": "0x0B64bFCd4201276e1c7fcd77a214D0a0a538eA3f",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 69,
+        "candidateId": 6,
+        "txHash": "0x345df1242bab91740a1076ab558e9c718ed80a97d423f7960c6265f6da7a0b19"
+      },
+      "response_time_ms": 23.71,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x345df1242bab91740a1076ab558e9c718ed80a97d423f7960c6265f6da7a0b19\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:42:48.835429\", \"election_id\": 69, \"id\": 308, \"tx_hash\": \"0x345df1242bab91740a1076ab558e9c718ed80a97d423f7960c6265f6da7a0b19\", \"voter_id\": 1}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:43:00.827559+00:00",
+      "request_index": 31,
+      "wallet": "0x0357C66D4e0136ABe64613CEE4d42515cDE034F1",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 69,
+        "candidateId": 5,
+        "txHash": "0xa4e3cb9078b5a5aea92228753e4aab0e2f0b07d8eeb1188ad161254ae1422003"
+      },
+      "response_time_ms": 21.91,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xa4e3cb9078b5a5aea92228753e4aab0e2f0b07d8eeb1188ad161254ae1422003\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:43:00.812629\", \"election_id\": 69, \"id\": 309, \"tx_hash\": \"0xa4e3cb9078b5a5aea92228753e4aab0e2f0b07d8eeb1188ad161254ae1422003\", \"voter_id\": 388}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:43:12.820768+00:00",
+      "request_index": 32,
+      "wallet": "0x6904AfC867c22294b1AaA24a5Dc6fda3dA374cb6",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 69,
+        "candidateId": 4,
+        "txHash": "0x85bf9904606cf302e83256dfaa693ddf3026ecf09e26658e890cadd9c033ec37"
+      },
+      "response_time_ms": 16.65,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x85bf9904606cf302e83256dfaa693ddf3026ecf09e26658e890cadd9c033ec37\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:43:12.810906\", \"election_id\": 69, \"id\": 310, \"tx_hash\": \"0x85bf9904606cf302e83256dfaa693ddf3026ecf09e26658e890cadd9c033ec37\", \"voter_id\": 386}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:43:37.224758+00:00",
+      "request_index": 33,
+      "wallet": "0x6904AfC867c22294b1AaA24a5Dc6fda3dA374cb6",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 70,
+        "candidateId": 5,
+        "txHash": "0x0447ccd453d10346c384ec06216bacac222c0c04c2471739505f0ff4cc34abbd"
+      },
+      "response_time_ms": 23.29,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x0447ccd453d10346c384ec06216bacac222c0c04c2471739505f0ff4cc34abbd\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:43:37.209873\", \"election_id\": 70, \"id\": 311, \"tx_hash\": \"0x0447ccd453d10346c384ec06216bacac222c0c04c2471739505f0ff4cc34abbd\", \"voter_id\": 386}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:43:50.125827+00:00",
+      "request_index": 34,
+      "wallet": "0x0357C66D4e0136ABe64613CEE4d42515cDE034F1",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 70,
+        "candidateId": 5,
+        "txHash": "0x3fb4bfacc5a000a649b3770910fe48c30dc82e1406d4182b01fdd84e534b89de"
+      },
+      "response_time_ms": 23.58,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x3fb4bfacc5a000a649b3770910fe48c30dc82e1406d4182b01fdd84e534b89de\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:43:50.112199\", \"election_id\": 70, \"id\": 312, \"tx_hash\": \"0x3fb4bfacc5a000a649b3770910fe48c30dc82e1406d4182b01fdd84e534b89de\", \"voter_id\": 388}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:44:00.910075+00:00",
+      "request_index": 35,
+      "wallet": "0x69918BA35fAd5E5Fd8DCf5464D0d07a9d7519199",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 70,
+        "candidateId": 6,
+        "txHash": "0x62d6d7b1b44fe7a259d7e1ef649f09a04bc004310d698e0430b84d564f01769a"
+      },
+      "response_time_ms": 35.26,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x62d6d7b1b44fe7a259d7e1ef649f09a04bc004310d698e0430b84d564f01769a\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:44:00.895987\", \"election_id\": 70, \"id\": 313, \"tx_hash\": \"0x62d6d7b1b44fe7a259d7e1ef649f09a04bc004310d698e0430b84d564f01769a\", \"voter_id\": 389}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:44:14.105503+00:00",
+      "request_index": 36,
+      "wallet": "0x0B64bFCd4201276e1c7fcd77a214D0a0a538eA3f",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 70,
+        "candidateId": 5,
+        "txHash": "0x25f1a092814e75178c685db8bf44101afa3e5ec914d3b6bcfd53a8ed05e9da64"
+      },
+      "response_time_ms": 19.99,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x25f1a092814e75178c685db8bf44101afa3e5ec914d3b6bcfd53a8ed05e9da64\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:44:14.092805\", \"election_id\": 70, \"id\": 314, \"tx_hash\": \"0x25f1a092814e75178c685db8bf44101afa3e5ec914d3b6bcfd53a8ed05e9da64\", \"voter_id\": 1}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:44:25.072456+00:00",
+      "request_index": 37,
+      "wallet": "0xcC8bD677e34F3121458d920b23c1309f39d538cB",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 70,
+        "candidateId": 6,
+        "txHash": "0x8951686c16630a30f293020bd5ace7d4caf0bc37f4bee7f327e8217e7eb44bb4"
+      },
+      "response_time_ms": 26.83,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x8951686c16630a30f293020bd5ace7d4caf0bc37f4bee7f327e8217e7eb44bb4\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:44:25.056517\", \"election_id\": 70, \"id\": 315, \"tx_hash\": \"0x8951686c16630a30f293020bd5ace7d4caf0bc37f4bee7f327e8217e7eb44bb4\", \"voter_id\": 385}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:44:49.251719+00:00",
+      "request_index": 38,
+      "wallet": "0x6b9F6cddAaa5cEC5a91aEE6fCA3B5B19175bA885",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 70,
+        "candidateId": 4,
+        "txHash": "0x939d9a0daaf89e3c33e1802acba16c7cbcd1921cfc4f931172f00c3dd76f4da3"
+      },
+      "response_time_ms": 28.24,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x939d9a0daaf89e3c33e1802acba16c7cbcd1921cfc4f931172f00c3dd76f4da3\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:44:49.235509\", \"election_id\": 70, \"id\": 316, \"tx_hash\": \"0x939d9a0daaf89e3c33e1802acba16c7cbcd1921cfc4f931172f00c3dd76f4da3\", \"voter_id\": 387}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:45:01.958855+00:00",
+      "request_index": 39,
+      "wallet": "0x6F6C505ae08f7bB7Da6E38A898c7Bb824717a30D",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 70,
+        "candidateId": 6,
+        "txHash": "0x061f52ea1df045285a5e5e5dc4af2d76df5f3fa5cd4aaa8f908af8ef2b18cf26"
+      },
+      "response_time_ms": 30.24,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x061f52ea1df045285a5e5e5dc4af2d76df5f3fa5cd4aaa8f908af8ef2b18cf26\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:45:01.938510\", \"election_id\": 70, \"id\": 317, \"tx_hash\": \"0x061f52ea1df045285a5e5e5dc4af2d76df5f3fa5cd4aaa8f908af8ef2b18cf26\", \"voter_id\": 384}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:45:37.319872+00:00",
+      "request_index": 40,
+      "wallet": "0x3224aA453cBd2d4746596462eA1f9C91a3656813",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 70,
+        "candidateId": 5,
+        "txHash": "0xf158d9f9c32eba4e9a9dc6e2845c7edee1c5de1ae9708a0ebf7f9397d97edc0c"
+      },
+      "response_time_ms": 24.91,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xf158d9f9c32eba4e9a9dc6e2845c7edee1c5de1ae9708a0ebf7f9397d97edc0c\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:45:37.305638\", \"election_id\": 70, \"id\": 318, \"tx_hash\": \"0xf158d9f9c32eba4e9a9dc6e2845c7edee1c5de1ae9708a0ebf7f9397d97edc0c\", \"voter_id\": 390}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:46:49.351663+00:00",
+      "request_index": 41,
+      "wallet": "0x0357C66D4e0136ABe64613CEE4d42515cDE034F1",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 71,
+        "candidateId": 5,
+        "txHash": "0x4ee2836d633251fc7d47edcda85beb19815e9478f82e964ecb6e790c4af6a79b"
+      },
+      "response_time_ms": 25.86,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x4ee2836d633251fc7d47edcda85beb19815e9478f82e964ecb6e790c4af6a79b\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:46:49.335060\", \"election_id\": 71, \"id\": 319, \"tx_hash\": \"0x4ee2836d633251fc7d47edcda85beb19815e9478f82e964ecb6e790c4af6a79b\", \"voter_id\": 388}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:47:00.876165+00:00",
+      "request_index": 42,
+      "wallet": "0x6F6C505ae08f7bB7Da6E38A898c7Bb824717a30D",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 71,
+        "candidateId": 4,
+        "txHash": "0xe020a0e4f6d0911e4e3b1b9b70a30700e67e7081faba049097fc49f8939ebb82"
+      },
+      "response_time_ms": 22.91,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xe020a0e4f6d0911e4e3b1b9b70a30700e67e7081faba049097fc49f8939ebb82\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:47:00.860757\", \"election_id\": 71, \"id\": 320, \"tx_hash\": \"0xe020a0e4f6d0911e4e3b1b9b70a30700e67e7081faba049097fc49f8939ebb82\", \"voter_id\": 384}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:47:12.909267+00:00",
+      "request_index": 43,
+      "wallet": "0x69918BA35fAd5E5Fd8DCf5464D0d07a9d7519199",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 71,
+        "candidateId": 5,
+        "txHash": "0x0f78824a4a5a497db56d35fa8340389eef06ce86ee706f194bf002e72b1cdbef"
+      },
+      "response_time_ms": 18.75,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x0f78824a4a5a497db56d35fa8340389eef06ce86ee706f194bf002e72b1cdbef\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:47:12.897397\", \"election_id\": 71, \"id\": 321, \"tx_hash\": \"0x0f78824a4a5a497db56d35fa8340389eef06ce86ee706f194bf002e72b1cdbef\", \"voter_id\": 389}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:47:24.959623+00:00",
+      "request_index": 44,
+      "wallet": "0xcC8bD677e34F3121458d920b23c1309f39d538cB",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 71,
+        "candidateId": 4,
+        "txHash": "0xe181df03d27b4ec94677249ca0432df506125f2f869689d31ac0c6d06f7f6b9b"
+      },
+      "response_time_ms": 23.05,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xe181df03d27b4ec94677249ca0432df506125f2f869689d31ac0c6d06f7f6b9b\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:47:24.945077\", \"election_id\": 71, \"id\": 322, \"tx_hash\": \"0xe181df03d27b4ec94677249ca0432df506125f2f869689d31ac0c6d06f7f6b9b\", \"voter_id\": 385}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:47:37.808755+00:00",
+      "request_index": 45,
+      "wallet": "0x3224aA453cBd2d4746596462eA1f9C91a3656813",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 71,
+        "candidateId": 5,
+        "txHash": "0x65b88fb93785393fb30cd0e3a0cead3a1ad4159f6c1b3593cac7784f97418175"
+      },
+      "response_time_ms": 26.89,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x65b88fb93785393fb30cd0e3a0cead3a1ad4159f6c1b3593cac7784f97418175\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:47:37.791969\", \"election_id\": 71, \"id\": 323, \"tx_hash\": \"0x65b88fb93785393fb30cd0e3a0cead3a1ad4159f6c1b3593cac7784f97418175\", \"voter_id\": 390}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:47:48.825883+00:00",
+      "request_index": 46,
+      "wallet": "0x6b9F6cddAaa5cEC5a91aEE6fCA3B5B19175bA885",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 71,
+        "candidateId": 5,
+        "txHash": "0x88067e409c45ded16474e1bc893fb3941e8447d7923f6f8b19d447bb05811382"
+      },
+      "response_time_ms": 26.31,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x88067e409c45ded16474e1bc893fb3941e8447d7923f6f8b19d447bb05811382\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:47:48.809784\", \"election_id\": 71, \"id\": 324, \"tx_hash\": \"0x88067e409c45ded16474e1bc893fb3941e8447d7923f6f8b19d447bb05811382\", \"voter_id\": 387}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:48:01.726801+00:00",
+      "request_index": 47,
+      "wallet": "0x6904AfC867c22294b1AaA24a5Dc6fda3dA374cb6",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 71,
+        "candidateId": 6,
+        "txHash": "0x6c5fa1f3aca5bda0c3bff1012159f7ed37b8ff89c90b2fde96806a34d0662900"
+      },
+      "response_time_ms": 25.42,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x6c5fa1f3aca5bda0c3bff1012159f7ed37b8ff89c90b2fde96806a34d0662900\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:48:01.712081\", \"election_id\": 71, \"id\": 325, \"tx_hash\": \"0x6c5fa1f3aca5bda0c3bff1012159f7ed37b8ff89c90b2fde96806a34d0662900\", \"voter_id\": 386}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:48:12.678315+00:00",
+      "request_index": 48,
+      "wallet": "0x0B64bFCd4201276e1c7fcd77a214D0a0a538eA3f",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 71,
+        "candidateId": 6,
+        "txHash": "0x3d8017d161cf4bec3e66f96c5002a23fe09386aec0657ad920a1277ade68d15b"
+      },
+      "response_time_ms": 21.99,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x3d8017d161cf4bec3e66f96c5002a23fe09386aec0657ad920a1277ade68d15b\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:48:12.665455\", \"election_id\": 71, \"id\": 326, \"tx_hash\": \"0x3d8017d161cf4bec3e66f96c5002a23fe09386aec0657ad920a1277ade68d15b\", \"voter_id\": 1}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:48:37.468506+00:00",
+      "request_index": 49,
+      "wallet": "0x0B64bFCd4201276e1c7fcd77a214D0a0a538eA3f",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 72,
+        "candidateId": 4,
+        "txHash": "0x15cfd4cdf27ff4d93fb983311a89f21ef7b98ab4ded5547186a6b60be84637a3"
+      },
+      "response_time_ms": 30.03,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x15cfd4cdf27ff4d93fb983311a89f21ef7b98ab4ded5547186a6b60be84637a3\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:48:37.447154\", \"election_id\": 72, \"id\": 327, \"tx_hash\": \"0x15cfd4cdf27ff4d93fb983311a89f21ef7b98ab4ded5547186a6b60be84637a3\", \"voter_id\": 1}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:48:48.971938+00:00",
+      "request_index": 50,
+      "wallet": "0x3224aA453cBd2d4746596462eA1f9C91a3656813",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 72,
+        "candidateId": 5,
+        "txHash": "0xd3a7a9879c8e5f2aa1a84fbb37d87c3202be675de1587a21576b82f4ef54e174"
+      },
+      "response_time_ms": 25.81,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xd3a7a9879c8e5f2aa1a84fbb37d87c3202be675de1587a21576b82f4ef54e174\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:48:48.957809\", \"election_id\": 72, \"id\": 328, \"tx_hash\": \"0xd3a7a9879c8e5f2aa1a84fbb37d87c3202be675de1587a21576b82f4ef54e174\", \"voter_id\": 390}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:49:01.046445+00:00",
+      "request_index": 51,
+      "wallet": "0x6904AfC867c22294b1AaA24a5Dc6fda3dA374cb6",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 72,
+        "candidateId": 5,
+        "txHash": "0xfc94b6d7fba7e30fe1c45fb39ffb81ce63a3975afa4b7c9b83b6ba641c82815f"
+      },
+      "response_time_ms": 18.23,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xfc94b6d7fba7e30fe1c45fb39ffb81ce63a3975afa4b7c9b83b6ba641c82815f\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:49:01.038623\", \"election_id\": 72, \"id\": 329, \"tx_hash\": \"0xfc94b6d7fba7e30fe1c45fb39ffb81ce63a3975afa4b7c9b83b6ba641c82815f\", \"voter_id\": 386}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:49:12.850506+00:00",
+      "request_index": 52,
+      "wallet": "0x6F6C505ae08f7bB7Da6E38A898c7Bb824717a30D",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 72,
+        "candidateId": 5,
+        "txHash": "0x16950f22646cfda59f9c3c7194dc1dd35cd86b6f6690576d0390c0552c88160f"
+      },
+      "response_time_ms": 24.88,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x16950f22646cfda59f9c3c7194dc1dd35cd86b6f6690576d0390c0552c88160f\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:49:12.834492\", \"election_id\": 72, \"id\": 330, \"tx_hash\": \"0x16950f22646cfda59f9c3c7194dc1dd35cd86b6f6690576d0390c0552c88160f\", \"voter_id\": 384}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:49:25.172346+00:00",
+      "request_index": 53,
+      "wallet": "0x0357C66D4e0136ABe64613CEE4d42515cDE034F1",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 72,
+        "candidateId": 4,
+        "txHash": "0x4fee2d7e1674671c030d44743a1e6351b48b43fece04c74be276ab5f8fbc89f7"
+      },
+      "response_time_ms": 22.37,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x4fee2d7e1674671c030d44743a1e6351b48b43fece04c74be276ab5f8fbc89f7\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:49:25.158063\", \"election_id\": 72, \"id\": 331, \"tx_hash\": \"0x4fee2d7e1674671c030d44743a1e6351b48b43fece04c74be276ab5f8fbc89f7\", \"voter_id\": 388}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:49:37.258214+00:00",
+      "request_index": 54,
+      "wallet": "0x6b9F6cddAaa5cEC5a91aEE6fCA3B5B19175bA885",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 72,
+        "candidateId": 5,
+        "txHash": "0x1f2d08676f55f8ccc99c77055ddedfae4564a704509d5b06310c73a3b06daa08"
+      },
+      "response_time_ms": 25.95,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x1f2d08676f55f8ccc99c77055ddedfae4564a704509d5b06310c73a3b06daa08\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:49:37.241715\", \"election_id\": 72, \"id\": 332, \"tx_hash\": \"0x1f2d08676f55f8ccc99c77055ddedfae4564a704509d5b06310c73a3b06daa08\", \"voter_id\": 387}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:49:49.263909+00:00",
+      "request_index": 55,
+      "wallet": "0x69918BA35fAd5E5Fd8DCf5464D0d07a9d7519199",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 72,
+        "candidateId": 6,
+        "txHash": "0xb4e07e92fd4b67b281a33b4e3b657571ab7eb60b28f9672a3325e7307f5514b7"
+      },
+      "response_time_ms": 22.78,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xb4e07e92fd4b67b281a33b4e3b657571ab7eb60b28f9672a3325e7307f5514b7\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:49:49.248337\", \"election_id\": 72, \"id\": 333, \"tx_hash\": \"0xb4e07e92fd4b67b281a33b4e3b657571ab7eb60b28f9672a3325e7307f5514b7\", \"voter_id\": 389}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:50:01.020778+00:00",
+      "request_index": 56,
+      "wallet": "0xcC8bD677e34F3121458d920b23c1309f39d538cB",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 72,
+        "candidateId": 6,
+        "txHash": "0xd1a5e4eb85a6b06ebe16c56df062cc1bf18f96e276f3ed35b98fed453be9a6f8"
+      },
+      "response_time_ms": 26.17,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xd1a5e4eb85a6b06ebe16c56df062cc1bf18f96e276f3ed35b98fed453be9a6f8\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:50:01.003647\", \"election_id\": 72, \"id\": 334, \"tx_hash\": \"0xd1a5e4eb85a6b06ebe16c56df062cc1bf18f96e276f3ed35b98fed453be9a6f8\", \"voter_id\": 385}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:51:13.613828+00:00",
+      "request_index": 57,
+      "wallet": "0x6b9F6cddAaa5cEC5a91aEE6fCA3B5B19175bA885",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 73,
+        "candidateId": 6,
+        "txHash": "0x76d03e0821224a82075e547c076c5516fc513c501a7e9f981fb3b6b4746b85ac"
+      },
+      "response_time_ms": 27.23,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x76d03e0821224a82075e547c076c5516fc513c501a7e9f981fb3b6b4746b85ac\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:51:13.592886\", \"election_id\": 73, \"id\": 335, \"tx_hash\": \"0x76d03e0821224a82075e547c076c5516fc513c501a7e9f981fb3b6b4746b85ac\", \"voter_id\": 387}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:51:49.286269+00:00",
+      "request_index": 58,
+      "wallet": "0x0B64bFCd4201276e1c7fcd77a214D0a0a538eA3f",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 73,
+        "candidateId": 6,
+        "txHash": "0xffab5833dac140689689af3c0bb5ec753f143373aee20b98639ab85bd6ff0341"
+      },
+      "response_time_ms": 26.85,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xffab5833dac140689689af3c0bb5ec753f143373aee20b98639ab85bd6ff0341\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:51:49.270534\", \"election_id\": 73, \"id\": 336, \"tx_hash\": \"0xffab5833dac140689689af3c0bb5ec753f143373aee20b98639ab85bd6ff0341\", \"voter_id\": 1}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:52:01.361716+00:00",
+      "request_index": 59,
+      "wallet": "0x69918BA35fAd5E5Fd8DCf5464D0d07a9d7519199",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 73,
+        "candidateId": 4,
+        "txHash": "0x081f67482ffc35da23bc3ac6fc8718a1d62737859f2969e70c67edaa3b453bea"
+      },
+      "response_time_ms": 22.41,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x081f67482ffc35da23bc3ac6fc8718a1d62737859f2969e70c67edaa3b453bea\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:52:01.346778\", \"election_id\": 73, \"id\": 337, \"tx_hash\": \"0x081f67482ffc35da23bc3ac6fc8718a1d62737859f2969e70c67edaa3b453bea\", \"voter_id\": 389}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:52:13.576109+00:00",
+      "request_index": 60,
+      "wallet": "0x6F6C505ae08f7bB7Da6E38A898c7Bb824717a30D",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 73,
+        "candidateId": 5,
+        "txHash": "0xef6f4c1d352701a29d33b390d6162415e76ab5709a0a20f2e05ee845ac05250e"
+      },
+      "response_time_ms": 25.97,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xef6f4c1d352701a29d33b390d6162415e76ab5709a0a20f2e05ee845ac05250e\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:52:13.560698\", \"election_id\": 73, \"id\": 338, \"tx_hash\": \"0xef6f4c1d352701a29d33b390d6162415e76ab5709a0a20f2e05ee845ac05250e\", \"voter_id\": 384}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:52:25.098859+00:00",
+      "request_index": 61,
+      "wallet": "0xcC8bD677e34F3121458d920b23c1309f39d538cB",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 73,
+        "candidateId": 6,
+        "txHash": "0x90c65cfb88bcc3f9690624e121480740f81039b5cd1ac1b42b10b1b68f31671f"
+      },
+      "response_time_ms": 33.24,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x90c65cfb88bcc3f9690624e121480740f81039b5cd1ac1b42b10b1b68f31671f\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:52:25.076654\", \"election_id\": 73, \"id\": 339, \"tx_hash\": \"0x90c65cfb88bcc3f9690624e121480740f81039b5cd1ac1b42b10b1b68f31671f\", \"voter_id\": 385}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:52:37.671495+00:00",
+      "request_index": 62,
+      "wallet": "0x0357C66D4e0136ABe64613CEE4d42515cDE034F1",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 73,
+        "candidateId": 4,
+        "txHash": "0xea1ae2fef74474f17458456c6a52cc37b2a93fdc6762ee74ed962459162733df"
+      },
+      "response_time_ms": 27.1,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xea1ae2fef74474f17458456c6a52cc37b2a93fdc6762ee74ed962459162733df\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:52:37.655938\", \"election_id\": 73, \"id\": 340, \"tx_hash\": \"0xea1ae2fef74474f17458456c6a52cc37b2a93fdc6762ee74ed962459162733df\", \"voter_id\": 388}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:52:49.282733+00:00",
+      "request_index": 63,
+      "wallet": "0x6904AfC867c22294b1AaA24a5Dc6fda3dA374cb6",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 73,
+        "candidateId": 5,
+        "txHash": "0x64e2d883bcb6ea15f19d15e0120eae20ebac85b6da4f87b0d27389390925e8f7"
+      },
+      "response_time_ms": 40.85,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x64e2d883bcb6ea15f19d15e0120eae20ebac85b6da4f87b0d27389390925e8f7\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:52:49.250701\", \"election_id\": 73, \"id\": 341, \"tx_hash\": \"0x64e2d883bcb6ea15f19d15e0120eae20ebac85b6da4f87b0d27389390925e8f7\", \"voter_id\": 386}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:53:01.112842+00:00",
+      "request_index": 64,
+      "wallet": "0x3224aA453cBd2d4746596462eA1f9C91a3656813",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 73,
+        "candidateId": 6,
+        "txHash": "0x2f9dfeff41e7042bff0372b8bf41a8cd590eafcdc9f1b547d427c4d19f5faa51"
+      },
+      "response_time_ms": 24.03,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x2f9dfeff41e7042bff0372b8bf41a8cd590eafcdc9f1b547d427c4d19f5faa51\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:53:01.096987\", \"election_id\": 73, \"id\": 342, \"tx_hash\": \"0x2f9dfeff41e7042bff0372b8bf41a8cd590eafcdc9f1b547d427c4d19f5faa51\", \"voter_id\": 390}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:53:25.269046+00:00",
+      "request_index": 65,
+      "wallet": "0x6904AfC867c22294b1AaA24a5Dc6fda3dA374cb6",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 74,
+        "candidateId": 4,
+        "txHash": "0xd877866ae65f759d14cc51e2815a6341bd8d42065245b2fa902c32ac87e13ba8"
+      },
+      "response_time_ms": 24.73,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xd877866ae65f759d14cc51e2815a6341bd8d42065245b2fa902c32ac87e13ba8\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:53:25.253889\", \"election_id\": 74, \"id\": 343, \"tx_hash\": \"0xd877866ae65f759d14cc51e2815a6341bd8d42065245b2fa902c32ac87e13ba8\", \"voter_id\": 386}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:53:36.844412+00:00",
+      "request_index": 66,
+      "wallet": "0x0357C66D4e0136ABe64613CEE4d42515cDE034F1",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 74,
+        "candidateId": 4,
+        "txHash": "0x19d9a0ab04ca7a681ab51e7cd9143d1b8bc07e8e8bc6128aaaebaf62e4282692"
+      },
+      "response_time_ms": 27.11,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x19d9a0ab04ca7a681ab51e7cd9143d1b8bc07e8e8bc6128aaaebaf62e4282692\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:53:36.827771\", \"election_id\": 74, \"id\": 344, \"tx_hash\": \"0x19d9a0ab04ca7a681ab51e7cd9143d1b8bc07e8e8bc6128aaaebaf62e4282692\", \"voter_id\": 388}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:53:49.734772+00:00",
+      "request_index": 67,
+      "wallet": "0x6b9F6cddAaa5cEC5a91aEE6fCA3B5B19175bA885",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 74,
+        "candidateId": 5,
+        "txHash": "0x9fd3d5bbdf00de9515b7dbe55cd6ab4a7898b1deeb7065ced71a3c229d107cb6"
+      },
+      "response_time_ms": 28.72,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x9fd3d5bbdf00de9515b7dbe55cd6ab4a7898b1deeb7065ced71a3c229d107cb6\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:53:49.720031\", \"election_id\": 74, \"id\": 345, \"tx_hash\": \"0x9fd3d5bbdf00de9515b7dbe55cd6ab4a7898b1deeb7065ced71a3c229d107cb6\", \"voter_id\": 387}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:54:00.707162+00:00",
+      "request_index": 68,
+      "wallet": "0x6F6C505ae08f7bB7Da6E38A898c7Bb824717a30D",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 74,
+        "candidateId": 4,
+        "txHash": "0xbfd20273de04da3f7a7dbcf25eff4f2b8e86bf7fcbbf0f66bdd5c766a85a8f40"
+      },
+      "response_time_ms": 28.0,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xbfd20273de04da3f7a7dbcf25eff4f2b8e86bf7fcbbf0f66bdd5c766a85a8f40\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:54:00.692198\", \"election_id\": 74, \"id\": 346, \"tx_hash\": \"0xbfd20273de04da3f7a7dbcf25eff4f2b8e86bf7fcbbf0f66bdd5c766a85a8f40\", \"voter_id\": 384}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:54:13.085833+00:00",
+      "request_index": 69,
+      "wallet": "0x0B64bFCd4201276e1c7fcd77a214D0a0a538eA3f",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 74,
+        "candidateId": 6,
+        "txHash": "0xafe48adebaa4bed0b5bdc00ebd216b2e94209e356874b3a214477853c60c0ea3"
+      },
+      "response_time_ms": 34.72,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xafe48adebaa4bed0b5bdc00ebd216b2e94209e356874b3a214477853c60c0ea3\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:54:13.060540\", \"election_id\": 74, \"id\": 347, \"tx_hash\": \"0xafe48adebaa4bed0b5bdc00ebd216b2e94209e356874b3a214477853c60c0ea3\", \"voter_id\": 1}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:54:24.844931+00:00",
+      "request_index": 70,
+      "wallet": "0x3224aA453cBd2d4746596462eA1f9C91a3656813",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 74,
+        "candidateId": 6,
+        "txHash": "0x20e6233b7fc1fc8eced326773daec2e7e796f68cd9c3f8a29dc660b8cab59ce9"
+      },
+      "response_time_ms": 23.38,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x20e6233b7fc1fc8eced326773daec2e7e796f68cd9c3f8a29dc660b8cab59ce9\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:54:24.829178\", \"election_id\": 74, \"id\": 348, \"tx_hash\": \"0x20e6233b7fc1fc8eced326773daec2e7e796f68cd9c3f8a29dc660b8cab59ce9\", \"voter_id\": 390}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:54:37.178987+00:00",
+      "request_index": 71,
+      "wallet": "0xcC8bD677e34F3121458d920b23c1309f39d538cB",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 74,
+        "candidateId": 6,
+        "txHash": "0xade003603e2f04f802c1526ff1b1e9748b61a0b34a054ac4300a2eea9eb31171"
+      },
+      "response_time_ms": 26.66,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xade003603e2f04f802c1526ff1b1e9748b61a0b34a054ac4300a2eea9eb31171\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:54:37.159226\", \"election_id\": 74, \"id\": 349, \"tx_hash\": \"0xade003603e2f04f802c1526ff1b1e9748b61a0b34a054ac4300a2eea9eb31171\", \"voter_id\": 385}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:54:49.042249+00:00",
+      "request_index": 72,
+      "wallet": "0x69918BA35fAd5E5Fd8DCf5464D0d07a9d7519199",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 74,
+        "candidateId": 5,
+        "txHash": "0xd46c8d1d345067370fe005dc9c8eaafaed60882205132b219a44fabb84644917"
+      },
+      "response_time_ms": 24.95,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xd46c8d1d345067370fe005dc9c8eaafaed60882205132b219a44fabb84644917\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:54:49.025318\", \"election_id\": 74, \"id\": 350, \"tx_hash\": \"0xd46c8d1d345067370fe005dc9c8eaafaed60882205132b219a44fabb84644917\", \"voter_id\": 389}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:55:12.646243+00:00",
+      "request_index": 73,
+      "wallet": "0x0357C66D4e0136ABe64613CEE4d42515cDE034F1",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 75,
+        "candidateId": 4,
+        "txHash": "0x7befda58a5ea311dd92adbfa6fb2f1131fe1ed76141cc0c2de28497e94726e4a"
+      },
+      "response_time_ms": 21.71,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x7befda58a5ea311dd92adbfa6fb2f1131fe1ed76141cc0c2de28497e94726e4a\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:55:12.631470\", \"election_id\": 75, \"id\": 351, \"tx_hash\": \"0x7befda58a5ea311dd92adbfa6fb2f1131fe1ed76141cc0c2de28497e94726e4a\", \"voter_id\": 388}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:55:25.026544+00:00",
+      "request_index": 74,
+      "wallet": "0x6904AfC867c22294b1AaA24a5Dc6fda3dA374cb6",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 75,
+        "candidateId": 6,
+        "txHash": "0x330d2e8b45b790d20b1e2a8c542f107e39d99c57a7b545c9a8047b03a35ac855"
+      },
+      "response_time_ms": 28.65,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x330d2e8b45b790d20b1e2a8c542f107e39d99c57a7b545c9a8047b03a35ac855\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:55:25.008499\", \"election_id\": 75, \"id\": 352, \"tx_hash\": \"0x330d2e8b45b790d20b1e2a8c542f107e39d99c57a7b545c9a8047b03a35ac855\", \"voter_id\": 386}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:55:37.116412+00:00",
+      "request_index": 75,
+      "wallet": "0x0B64bFCd4201276e1c7fcd77a214D0a0a538eA3f",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 75,
+        "candidateId": 6,
+        "txHash": "0x2ef7dc8e0ec6dcd484ab0d5960311bd287867de1d6a2e0ebb9e3d1aa5f1da6c8"
+      },
+      "response_time_ms": 31.28,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x2ef7dc8e0ec6dcd484ab0d5960311bd287867de1d6a2e0ebb9e3d1aa5f1da6c8\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:55:37.094963\", \"election_id\": 75, \"id\": 353, \"tx_hash\": \"0x2ef7dc8e0ec6dcd484ab0d5960311bd287867de1d6a2e0ebb9e3d1aa5f1da6c8\", \"voter_id\": 1}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:55:49.741193+00:00",
+      "request_index": 76,
+      "wallet": "0x3224aA453cBd2d4746596462eA1f9C91a3656813",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 75,
+        "candidateId": 4,
+        "txHash": "0x98b9ba1482835b276580f512e9a8052e5e576fed48b18bc84ff3f64bc856f6ba"
+      },
+      "response_time_ms": 31.07,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x98b9ba1482835b276580f512e9a8052e5e576fed48b18bc84ff3f64bc856f6ba\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:55:49.719846\", \"election_id\": 75, \"id\": 354, \"tx_hash\": \"0x98b9ba1482835b276580f512e9a8052e5e576fed48b18bc84ff3f64bc856f6ba\", \"voter_id\": 390}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:56:00.688826+00:00",
+      "request_index": 77,
+      "wallet": "0x69918BA35fAd5E5Fd8DCf5464D0d07a9d7519199",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 75,
+        "candidateId": 6,
+        "txHash": "0x632ce7423745ee14ba676f49a5eeab005a89a3abe2cb041ea2f9fbd5fd8b3f41"
+      },
+      "response_time_ms": 22.22,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x632ce7423745ee14ba676f49a5eeab005a89a3abe2cb041ea2f9fbd5fd8b3f41\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:56:00.676838\", \"election_id\": 75, \"id\": 355, \"tx_hash\": \"0x632ce7423745ee14ba676f49a5eeab005a89a3abe2cb041ea2f9fbd5fd8b3f41\", \"voter_id\": 389}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:56:14.389092+00:00",
+      "request_index": 78,
+      "wallet": "0x6b9F6cddAaa5cEC5a91aEE6fCA3B5B19175bA885",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 75,
+        "candidateId": 6,
+        "txHash": "0x03d1bf86d3c8d2bcbe85e53ea0a3abc1e7ac487959acec6053bd138646925c6e"
+      },
+      "response_time_ms": 28.49,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x03d1bf86d3c8d2bcbe85e53ea0a3abc1e7ac487959acec6053bd138646925c6e\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:56:14.374373\", \"election_id\": 75, \"id\": 356, \"tx_hash\": \"0x03d1bf86d3c8d2bcbe85e53ea0a3abc1e7ac487959acec6053bd138646925c6e\", \"voter_id\": 387}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:56:25.152162+00:00",
+      "request_index": 79,
+      "wallet": "0xcC8bD677e34F3121458d920b23c1309f39d538cB",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 75,
+        "candidateId": 6,
+        "txHash": "0x9eee1ddd0385b6f518fc70f5928bfd22624a53e6f9faa510f35863f695e0cf71"
+      },
+      "response_time_ms": 38.72,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x9eee1ddd0385b6f518fc70f5928bfd22624a53e6f9faa510f35863f695e0cf71\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:56:25.126679\", \"election_id\": 75, \"id\": 357, \"tx_hash\": \"0x9eee1ddd0385b6f518fc70f5928bfd22624a53e6f9faa510f35863f695e0cf71\", \"voter_id\": 385}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:56:36.927468+00:00",
+      "request_index": 80,
+      "wallet": "0x6F6C505ae08f7bB7Da6E38A898c7Bb824717a30D",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 75,
+        "candidateId": 6,
+        "txHash": "0xbd4962df14ae204438ff39a2fab1eff0396b6192ca6b70a2579e320a284fed96"
+      },
+      "response_time_ms": 25.87,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xbd4962df14ae204438ff39a2fab1eff0396b6192ca6b70a2579e320a284fed96\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:56:36.912317\", \"election_id\": 75, \"id\": 358, \"tx_hash\": \"0xbd4962df14ae204438ff39a2fab1eff0396b6192ca6b70a2579e320a284fed96\", \"voter_id\": 384}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:57:01.593002+00:00",
+      "request_index": 81,
+      "wallet": "0xcC8bD677e34F3121458d920b23c1309f39d538cB",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 76,
+        "candidateId": 6,
+        "txHash": "0x69a9d398851df3f68ab671ef251086309d09271de04264b49fd8af6266556e83"
+      },
+      "response_time_ms": 23.84,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x69a9d398851df3f68ab671ef251086309d09271de04264b49fd8af6266556e83\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:57:01.577498\", \"election_id\": 76, \"id\": 359, \"tx_hash\": \"0x69a9d398851df3f68ab671ef251086309d09271de04264b49fd8af6266556e83\", \"voter_id\": 385}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:57:13.071523+00:00",
+      "request_index": 82,
+      "wallet": "0x0B64bFCd4201276e1c7fcd77a214D0a0a538eA3f",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 76,
+        "candidateId": 6,
+        "txHash": "0x57553c5e215768225a1fdf41b100c4fbab27f631156a2207a129ab4bcc3ed9f5"
+      },
+      "response_time_ms": 26.11,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x57553c5e215768225a1fdf41b100c4fbab27f631156a2207a129ab4bcc3ed9f5\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:57:13.056108\", \"election_id\": 76, \"id\": 360, \"tx_hash\": \"0x57553c5e215768225a1fdf41b100c4fbab27f631156a2207a129ab4bcc3ed9f5\", \"voter_id\": 1}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:57:25.745085+00:00",
+      "request_index": 83,
+      "wallet": "0x0357C66D4e0136ABe64613CEE4d42515cDE034F1",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 76,
+        "candidateId": 6,
+        "txHash": "0xfc9ea55f5dfb0aa71eebe352b4f08d10d2dae561c48c53326e872f6a5d11fab0"
+      },
+      "response_time_ms": 46.03,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xfc9ea55f5dfb0aa71eebe352b4f08d10d2dae561c48c53326e872f6a5d11fab0\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:57:25.706502\", \"election_id\": 76, \"id\": 361, \"tx_hash\": \"0xfc9ea55f5dfb0aa71eebe352b4f08d10d2dae561c48c53326e872f6a5d11fab0\", \"voter_id\": 388}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:57:36.679326+00:00",
+      "request_index": 84,
+      "wallet": "0x3224aA453cBd2d4746596462eA1f9C91a3656813",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 76,
+        "candidateId": 6,
+        "txHash": "0x4d0de22c26e2689312ba835f553a88422f8f5bc823e59d98ad77631d27705e62"
+      },
+      "response_time_ms": 32.01,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x4d0de22c26e2689312ba835f553a88422f8f5bc823e59d98ad77631d27705e62\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:57:36.658001\", \"election_id\": 76, \"id\": 362, \"tx_hash\": \"0x4d0de22c26e2689312ba835f553a88422f8f5bc823e59d98ad77631d27705e62\", \"voter_id\": 390}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:57:48.797898+00:00",
+      "request_index": 85,
+      "wallet": "0x6F6C505ae08f7bB7Da6E38A898c7Bb824717a30D",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 76,
+        "candidateId": 5,
+        "txHash": "0x7fd8e30a19bc0b004e1fca7409bb5e1b48c667e5d703e3dc86e04688426a2462"
+      },
+      "response_time_ms": 25.69,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x7fd8e30a19bc0b004e1fca7409bb5e1b48c667e5d703e3dc86e04688426a2462\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:57:48.781716\", \"election_id\": 76, \"id\": 363, \"tx_hash\": \"0x7fd8e30a19bc0b004e1fca7409bb5e1b48c667e5d703e3dc86e04688426a2462\", \"voter_id\": 384}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:58:01.145042+00:00",
+      "request_index": 86,
+      "wallet": "0x6b9F6cddAaa5cEC5a91aEE6fCA3B5B19175bA885",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 76,
+        "candidateId": 5,
+        "txHash": "0x2d5d4e4a313211ba5e42217b42d630f3ead524309890ce2962f54d8579fd9e80"
+      },
+      "response_time_ms": 23.04,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x2d5d4e4a313211ba5e42217b42d630f3ead524309890ce2962f54d8579fd9e80\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:58:01.130520\", \"election_id\": 76, \"id\": 364, \"tx_hash\": \"0x2d5d4e4a313211ba5e42217b42d630f3ead524309890ce2962f54d8579fd9e80\", \"voter_id\": 387}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:58:13.706831+00:00",
+      "request_index": 87,
+      "wallet": "0x69918BA35fAd5E5Fd8DCf5464D0d07a9d7519199",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 76,
+        "candidateId": 6,
+        "txHash": "0xc90b824413e26384055a153b7319502c658bbff2ce3d909ab209a818bfb6088d"
+      },
+      "response_time_ms": 30.21,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xc90b824413e26384055a153b7319502c658bbff2ce3d909ab209a818bfb6088d\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:58:13.689709\", \"election_id\": 76, \"id\": 365, \"tx_hash\": \"0xc90b824413e26384055a153b7319502c658bbff2ce3d909ab209a818bfb6088d\", \"voter_id\": 389}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:58:24.913726+00:00",
+      "request_index": 88,
+      "wallet": "0x6904AfC867c22294b1AaA24a5Dc6fda3dA374cb6",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 76,
+        "candidateId": 5,
+        "txHash": "0xb76fba4ba042a2b1a3bd115062c4ba5fdd73937733038c5a633c2a3918301dbd"
+      },
+      "response_time_ms": 44.86,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xb76fba4ba042a2b1a3bd115062c4ba5fdd73937733038c5a633c2a3918301dbd\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:58:24.880587\", \"election_id\": 76, \"id\": 366, \"tx_hash\": \"0xb76fba4ba042a2b1a3bd115062c4ba5fdd73937733038c5a633c2a3918301dbd\", \"voter_id\": 386}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:58:49.074606+00:00",
+      "request_index": 89,
+      "wallet": "0x3224aA453cBd2d4746596462eA1f9C91a3656813",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 77,
+        "candidateId": 5,
+        "txHash": "0x2398e04e35b9fb51ea211623152f53f59590a3eb1dd5a991c6a186cbcd0bd756"
+      },
+      "response_time_ms": 27.9,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x2398e04e35b9fb51ea211623152f53f59590a3eb1dd5a991c6a186cbcd0bd756\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:58:49.057319\", \"election_id\": 77, \"id\": 367, \"tx_hash\": \"0x2398e04e35b9fb51ea211623152f53f59590a3eb1dd5a991c6a186cbcd0bd756\", \"voter_id\": 390}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:59:01.947819+00:00",
+      "request_index": 90,
+      "wallet": "0x6F6C505ae08f7bB7Da6E38A898c7Bb824717a30D",
+      "candidate_id": 5,
+      "candidate_name": "Bob",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 77,
+        "candidateId": 5,
+        "txHash": "0xc84530ed4ffe9c6d81ca97aba43714dd7b3a06b3b84179151041460d5791a749"
+      },
+      "response_time_ms": 26.74,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xc84530ed4ffe9c6d81ca97aba43714dd7b3a06b3b84179151041460d5791a749\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 5, \"created_at\": \"2025-11-10T20:59:01.931479\", \"election_id\": 77, \"id\": 368, \"tx_hash\": \"0xc84530ed4ffe9c6d81ca97aba43714dd7b3a06b3b84179151041460d5791a749\", \"voter_id\": 384}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:59:13.379041+00:00",
+      "request_index": 91,
+      "wallet": "0x0B64bFCd4201276e1c7fcd77a214D0a0a538eA3f",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 77,
+        "candidateId": 6,
+        "txHash": "0x7fbfafe89d2ada4d7bfcc00695b9ba1b9514c64c0d81c043e1c710ace4db6a00"
+      },
+      "response_time_ms": 23.2,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x7fbfafe89d2ada4d7bfcc00695b9ba1b9514c64c0d81c043e1c710ace4db6a00\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:59:13.363806\", \"election_id\": 77, \"id\": 369, \"tx_hash\": \"0x7fbfafe89d2ada4d7bfcc00695b9ba1b9514c64c0d81c043e1c710ace4db6a00\", \"voter_id\": 1}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:59:38.341388+00:00",
+      "request_index": 92,
+      "wallet": "0x6904AfC867c22294b1AaA24a5Dc6fda3dA374cb6",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 77,
+        "candidateId": 6,
+        "txHash": "0x3b99ba846e594da86732d3a624ad34bfe7654a0a51db83ecc6f91aec2fda8f45"
+      },
+      "response_time_ms": 28.87,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x3b99ba846e594da86732d3a624ad34bfe7654a0a51db83ecc6f91aec2fda8f45\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T20:59:38.321705\", \"election_id\": 77, \"id\": 370, \"tx_hash\": \"0x3b99ba846e594da86732d3a624ad34bfe7654a0a51db83ecc6f91aec2fda8f45\", \"voter_id\": 386}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T20:59:49.609494+00:00",
+      "request_index": 93,
+      "wallet": "0x69918BA35fAd5E5Fd8DCf5464D0d07a9d7519199",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 77,
+        "candidateId": 4,
+        "txHash": "0x14e3ca10a07d2db855fe80a5eb0e4057b60668107408ed0bd825d4965648b523"
+      },
+      "response_time_ms": 22.13,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x14e3ca10a07d2db855fe80a5eb0e4057b60668107408ed0bd825d4965648b523\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T20:59:49.594228\", \"election_id\": 77, \"id\": 371, \"tx_hash\": \"0x14e3ca10a07d2db855fe80a5eb0e4057b60668107408ed0bd825d4965648b523\", \"voter_id\": 389}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T21:00:00.875417+00:00",
+      "request_index": 94,
+      "wallet": "0x6b9F6cddAaa5cEC5a91aEE6fCA3B5B19175bA885",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 77,
+        "candidateId": 4,
+        "txHash": "0xaa823374bab01cf26928883287e41130423eed917b1578efd52d3873d9d582ca"
+      },
+      "response_time_ms": 19.02,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xaa823374bab01cf26928883287e41130423eed917b1578efd52d3873d9d582ca\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T21:00:00.863305\", \"election_id\": 77, \"id\": 372, \"tx_hash\": \"0xaa823374bab01cf26928883287e41130423eed917b1578efd52d3873d9d582ca\", \"voter_id\": 387}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T21:00:13.193310+00:00",
+      "request_index": 95,
+      "wallet": "0xcC8bD677e34F3121458d920b23c1309f39d538cB",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 77,
+        "candidateId": 4,
+        "txHash": "0xf82abd7cc637d1715463b30b611e2ac01ccd8cc10e724c2a2b1da0f7a4734ed2"
+      },
+      "response_time_ms": 23.56,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xf82abd7cc637d1715463b30b611e2ac01ccd8cc10e724c2a2b1da0f7a4734ed2\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T21:00:13.178532\", \"election_id\": 77, \"id\": 373, \"tx_hash\": \"0xf82abd7cc637d1715463b30b611e2ac01ccd8cc10e724c2a2b1da0f7a4734ed2\", \"voter_id\": 385}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T21:00:37.158702+00:00",
+      "request_index": 96,
+      "wallet": "0x0357C66D4e0136ABe64613CEE4d42515cDE034F1",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 77,
+        "candidateId": 4,
+        "txHash": "0x70a1bd522fafbeeb8fa04376d03a8ee0faef2869d6c33726248ffee41b39098c"
+      },
+      "response_time_ms": 30.62,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x70a1bd522fafbeeb8fa04376d03a8ee0faef2869d6c33726248ffee41b39098c\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T21:00:37.137300\", \"election_id\": 77, \"id\": 374, \"tx_hash\": \"0x70a1bd522fafbeeb8fa04376d03a8ee0faef2869d6c33726248ffee41b39098c\", \"voter_id\": 388}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T21:01:00.764073+00:00",
+      "request_index": 97,
+      "wallet": "0x0B64bFCd4201276e1c7fcd77a214D0a0a538eA3f",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 78,
+        "candidateId": 6,
+        "txHash": "0x55e7d067603cbcc268b11f46ee89216ff37242313e824a1c127fed6cbc80858b"
+      },
+      "response_time_ms": 23.7,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x55e7d067603cbcc268b11f46ee89216ff37242313e824a1c127fed6cbc80858b\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T21:01:00.748225\", \"election_id\": 78, \"id\": 375, \"tx_hash\": \"0x55e7d067603cbcc268b11f46ee89216ff37242313e824a1c127fed6cbc80858b\", \"voter_id\": 1}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T21:01:25.911220+00:00",
+      "request_index": 98,
+      "wallet": "0x6F6C505ae08f7bB7Da6E38A898c7Bb824717a30D",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 78,
+        "candidateId": 6,
+        "txHash": "0xa83ab4259c6846f0ea8efeae9619ba64890bfff52bb269db8b9379eebb2565eb"
+      },
+      "response_time_ms": 34.6,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0xa83ab4259c6846f0ea8efeae9619ba64890bfff52bb269db8b9379eebb2565eb\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T21:01:25.888087\", \"election_id\": 78, \"id\": 376, \"tx_hash\": \"0xa83ab4259c6846f0ea8efeae9619ba64890bfff52bb269db8b9379eebb2565eb\", \"voter_id\": 384}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T21:01:38.089791+00:00",
+      "request_index": 99,
+      "wallet": "0x0357C66D4e0136ABe64613CEE4d42515cDE034F1",
+      "candidate_id": 4,
+      "candidate_name": "Alice",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 78,
+        "candidateId": 4,
+        "txHash": "0x889687d9ad3b8fb03d68ba4e5671e3596822e41d605a72dc39b2e1378a343d3f"
+      },
+      "response_time_ms": 29.63,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x889687d9ad3b8fb03d68ba4e5671e3596822e41d605a72dc39b2e1378a343d3f\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 4, \"created_at\": \"2025-11-10T21:01:38.070421\", \"election_id\": 78, \"id\": 377, \"tx_hash\": \"0x889687d9ad3b8fb03d68ba4e5671e3596822e41d605a72dc39b2e1378a343d3f\", \"voter_id\": 388}}",
+      "attempt": 1
+    },
+    {
+      "timestamp": "2025-11-10T21:01:49.376835+00:00",
+      "request_index": 100,
+      "wallet": "0x69918BA35fAd5E5Fd8DCf5464D0d07a9d7519199",
+      "candidate_id": 6,
+      "candidate_name": "Carol",
+      "request_type": "vote",
+      "payload": {
+        "electionId": 78,
+        "candidateId": 6,
+        "txHash": "0x8ec52d4b61a8328fce1a18a4c35509991fe29ed324cfd9f62925a0d0ef62c6ef"
+      },
+      "response_time_ms": 44.63,
+      "operation_status": "success",
+      "status_code": 200,
+      "message": "ok",
+      "response_excerpt": "{\"blockchain\": {\"status\": \"submitted\", \"tx_hash\": \"0x8ec52d4b61a8328fce1a18a4c35509991fe29ed324cfd9f62925a0d0ef62c6ef\"}, \"status\": \"ok\", \"vote\": {\"candidate_id\": 6, \"created_at\": \"2025-11-10T21:01:49.344192\", \"election_id\": 78, \"id\": 378, \"tx_hash\": \"0x8ec52d4b61a8328fce1a18a4c35509991fe29ed324cfd9f62925a0d0ef62c6ef\", \"voter_id\": 389}}",
+      "attempt": 1
+    }
+  ]
+}

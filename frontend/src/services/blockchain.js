@@ -52,7 +52,29 @@ export const createElectionOnChain = async (title, candidates) => {
   const contract = await getContract();
   const from = await getActiveAccount();
   const receipt = await contract.methods.createElection(title, candidates).send({ from });
-  return receipt.transactionHash;
+  let chainElectionId = null;
+
+  try {
+    // Tenta extrair o ID diretamente do evento
+    const event = receipt?.events?.ElectionCreated;
+    if (event?.returnValues && event.returnValues.electionId !== undefined) {
+      chainElectionId = Number(event.returnValues.electionId);
+    } else {
+      // Fallback: consulta electionCount e assume o ultimo indice
+      const electionCount = await contract.methods.electionCount().call();
+      chainElectionId = Math.max(0, Number(electionCount) - 1);
+    }
+  } catch (error) {
+    // Se houver qualquer erro ao decodificar parametros / ABI, seguimos sem o ID explicito.
+    // O backend fara o mapeamento heuristico (id-1) como antes.
+    console.warn("Falha ao resolver chainElectionId, usando fallback no backend:", error);
+    chainElectionId = null;
+  }
+
+  return {
+    txHash: receipt.transactionHash,
+    chainElectionId,
+  };
 };
 
 export const voteOnChain = async (electionId, candidateIndex) => {

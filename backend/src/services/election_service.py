@@ -69,6 +69,7 @@ def create_election(
     candidates: List[str],
     creator_wallet: str,
     tx_hash: Optional[str] = None,
+    chain_election_id: Optional[int] = None,
 ) -> Dict:
     with session_scope() as session:
         user = session.execute(
@@ -85,6 +86,11 @@ def create_election(
             if candidate is None:
                 candidate = Candidate(name=candidate_name)
             election.candidates.append(candidate)
+
+        if chain_election_id is not None:
+            # Persiste o mapeamento explicito entre a eleicao no banco
+            # e o ID correspondente no contrato.
+            election.chain_election_id = chain_election_id
 
         session.add(election)
         session.flush()
@@ -180,7 +186,7 @@ def get_election_results(
         )
         if election is None:
             return None
-
+        chain_election_id = getattr(election, "chain_election_id", None)
         election_dict = election.to_dict()
 
         votes = (
@@ -213,9 +219,11 @@ def get_election_results(
         else:
             chain_service = get_blockchain_service()
             if chain_service:
-                chain_election_id = _resolve_chain_election_id(election_id, chain_service)
-                if chain_election_id is not None:
-                    blockchain_data = chain_service.fetch_results(chain_election_id)
+                effective_chain_id = chain_election_id
+                if effective_chain_id is None:
+                    effective_chain_id = _resolve_chain_election_id(election_id, chain_service)
+                if effective_chain_id is not None:
+                    blockchain_data = chain_service.fetch_results(effective_chain_id)
                     if blockchain_data:
                         _store_chain_results(
                             election_id, blockchain_data[0], blockchain_data[1]

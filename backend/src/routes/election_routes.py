@@ -28,6 +28,7 @@ def create_new_election():
     description = payload.get("description", "")
     candidates = payload.get("candidates", [])
     tx_hash = payload.get("txHash")
+    chain_election_id = payload.get("chainElectionId")
     if not title or not candidates:
         return jsonify({"message": "title and candidates are required"}), 400
     if not tx_hash:
@@ -40,6 +41,7 @@ def create_new_election():
             candidates=candidates,
             creator_wallet=wallet,
             tx_hash=tx_hash,
+            chain_election_id=chain_election_id,
         )
     except ValueError as exc:
         return jsonify({"message": str(exc)}), 400

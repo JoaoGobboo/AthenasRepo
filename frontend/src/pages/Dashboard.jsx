@@ -37,12 +37,13 @@ const Dashboard = () => {
         setMessage("Informe ao menos um candidato.");
         return;
       }
-      const txHash = await createElectionOnChain(form.title, candidates);
+      const { txHash, chainElectionId } = await createElectionOnChain(form.title, candidates);
       await createElection({
         title: form.title,
         description: form.description,
         candidates,
-        txHash
+        txHash,
+        chainElectionId
       });
       setForm({ title: "", description: "", candidates: "" });
       setMessage("Eleição criada com sucesso!");

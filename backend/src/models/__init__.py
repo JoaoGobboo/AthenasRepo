@@ -68,6 +68,7 @@ class Election(Base):
     description = Column(String(500))
     created_by = Column(Integer, ForeignKey("users.id"))
     created_at = Column(DateTime, default=datetime.utcnow)
+    chain_election_id = Column(Integer)
 
     candidates = relationship(
         "Candidate", secondary=election_candidates, back_populates="elections"
@@ -80,6 +81,7 @@ class Election(Base):
             "title": self.title,
             "description": self.description,
             "created_at": self.created_at.isoformat(),
+            "chain_election_id": self.chain_election_id,
             "candidates": [candidate.to_dict() for candidate in self.candidates],
         }
 

@@ -234,10 +234,25 @@ def get_election_results(
 
     if blockchain_data:
         candidate_names, chain_counts = blockchain_data
-        chain_results = [
-            {"candidate": candidate_names[idx], "votes": chain_counts[idx]}
-            for idx in range(len(candidate_names))
-        ]
+        db_candidate_names = [c["name"] for c in election_dict["candidates"]]
+
+        # Se os nomes dos candidatos na blockchain nao coincidirem com os do banco,
+        # tratamos como inconsistencia e voltamos a usar apenas os dados locais.
+        if candidate_names != db_candidate_names:
+            blockchain_meta["status"] = "mismatch"
+            blockchain_data = None
+            chain_results = [
+                {
+                    "candidate": candidate["name"],
+                    "votes": vote_counts.get(candidate["id"], 0),
+                }
+                for candidate in election_dict["candidates"]
+            ]
+        else:
+            chain_results = [
+                {"candidate": candidate_names[idx], "votes": chain_counts[idx]}
+                for idx in range(len(candidate_names))
+            ]
     else:
         chain_results = [
             {
